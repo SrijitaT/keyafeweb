@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './Home.js';
+import Home from './pages/Home/index.js';
 import * as serviceWorker from './serviceWorker';
 import {
     BrowserRouter as Router,
@@ -9,9 +9,10 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Header from "./Header.js";
-import About from "./About.js";
-import Gallery from "./Gallery.js";
+import Header from "./common/Header.js";
+import About from "./pages/About.js";
+import Gallery from "./pages/Gallery.js";
+import Contact from "./pages/Contact"
 ReactDOM.render(<Router>
     <Header />
     <Switch>
@@ -20,6 +21,9 @@ ReactDOM.render(<Router>
         </Route>
         <Route path="/gallery">
             <Gallery />
+        </Route>
+        <Route path="/contact">
+            <Contact />
         </Route>
         <Route path="/">
             <Home />
