@@ -12,7 +12,9 @@ import {
 import Header from "./common/Header.js";
 import About from "./pages/About.js";
 import Gallery from "./pages/Gallery.js";
-import Contact from "./pages/Contact"
+import Contact from "./pages/Contact";
+import Footer from "./common/Footer";
+
 ReactDOM.render(<Router>
     <Header />
     <Switch>
@@ -29,6 +31,7 @@ ReactDOM.render(<Router>
             <Home />
         </Route>
     </Switch>
+    <Footer />
 </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

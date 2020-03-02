@@ -34,7 +34,7 @@ export default class BannerBottom extends Component {
                             <p class="text-uppercase mb-4 mt-2">A few words about our Site</p>
                             <h4 class="aboutright about-right-2">Nemo enim ipsam voluptatem quia voluptas dolore magna aliqua Suspendisse
 					interdum velit vel qu dapibus condimentum.</h4>
-                            <h5 class="text-uppsecase font-weight-bold text-dark mt-4">Chloe Jack
+                            <h5 class="text-uppsecase font-weight-bold text-dark mt-4">Srijita Thakur
 					<span class="text-secondary font-weight-normal">(Master Chef)</span>
                             </h5>
                         </div>
