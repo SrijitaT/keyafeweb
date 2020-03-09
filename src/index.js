@@ -11,9 +11,10 @@ import {
 } from "react-router-dom";
 import Header from "./common/Header.js";
 import About from "./pages/About.js";
-import Gallery from "./pages/Gallery.js";
+import Gallery from "./pages/Gallery/index";
 import Contact from "./pages/Contact";
 import Footer from "./common/Footer";
+import UploadImg from "./pages/admin/UploadImg";
 
 ReactDOM.render(<Router>
     <Header />
@@ -27,6 +28,7 @@ ReactDOM.render(<Router>
         <Route path="/contact">
             <Contact />
         </Route>
+        <Route exact path="/upload/images"><UploadImg /></Route>
         <Route path="/">
             <Home />
         </Route>
