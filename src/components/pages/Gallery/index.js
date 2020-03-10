@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Catalogue from "./Catalogue";
-import BannerTop from "../../common/BannerTop";
+import BannerTop from "components/common/BannerTop";
 export default class Gallery extends Component {
     render() {
         return (

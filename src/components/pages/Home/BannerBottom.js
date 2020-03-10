@@ -21,7 +21,7 @@ export default class BannerBottom extends Component {
                                     </button>
                                 </div>
                                 <div class="col-lg-6 about-img text-lg-enter">
-                                    <img src={require("../../images/about.png")} alt="" class="img-fluid" />
+                                    <img src={require("images/about.png")} alt="" class="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@ export default class BannerBottom extends Component {
                         </div>
                     </div>
 
-                    <img src={require("../../images/cake7.png")} alt="" class="img-fluid cake-style" />
+                    <img src={require("images/cake7.png")} alt="" class="img-fluid cake-style" />
                 </section>
             </div>
         )

@@ -16,7 +16,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g1.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g1.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -26,7 +26,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g2.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g2.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -36,7 +36,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g3.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g3.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -48,7 +48,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g4.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g4.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -58,7 +58,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g5.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g5.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -68,7 +68,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g6.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g6.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -80,7 +80,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g7.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g7.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -90,7 +90,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g8.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g8.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>
@@ -100,7 +100,7 @@ function Catalogue() {
                                     <div className="w3layouts_port_head">
                                         <h3>Keyafe</h3>
                                     </div>
-                                    <img src={require("../../images/g9.jpg")} alt=" " className="img-fluid" />
+                                    <img src={require("images/g9.jpg")} alt=" " className="img-fluid" />
                                 </div>
                             </a>
                         </div>

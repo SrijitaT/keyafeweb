@@ -51,7 +51,7 @@ function About() {
                             <div className="row mt-30">
                                 <div className="col-md-3 col-6">
                                     <div className="box15">
-                                        <img src={require('./../images/t1.jpg')} alt="" className="img-fluid" />
+                                        <img src={require('images/t1.jpg')} alt="" className="img-fluid" />
                                         <div className="box-content">
                                             <h3 className="title">Cruiser</h3>
                                             <ul className="icon">
@@ -71,7 +71,7 @@ function About() {
                                 </div>
                                 <div className="col-md-3 col-6">
                                     <div className="box15">
-                                        <img src={require('../images/t2.jpg')} alt="" className="img-fluid" />
+                                        <img src={require('images/t2.jpg')} alt="" className="img-fluid" />
                                         <div className="box-content">
                                             <h3 className="title">Sthesia</h3>
                                             <ul className="icon">
@@ -91,7 +91,7 @@ function About() {
                                 </div>
                                 <div className="col-md-3 col-6">
                                     <div className="box15">
-                                        <img src={require(`../images/t3.jpg`)} alt="" className="img-fluid" />
+                                        <img src={require(`images/t3.jpg`)} alt="" className="img-fluid" />
                                         <div className="box-content">
                                             <h3 className="title">Frapples</h3>
                                             <ul className="icon">
@@ -111,7 +111,7 @@ function About() {
                                 </div>
                                 <div className="col-md-3 col-6">
                                     <div className="box15">
-                                        <img src={require('../images/t4.jpg')} alt="" className="img-fluid" />
+                                        <img src={require('images/t4.jpg')} alt="" className="img-fluid" />
                                         <div className="box-content">
                                             <h3 className="title">Molive</h3>
                                             <ul className="icon">
