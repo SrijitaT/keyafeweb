@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
-const db = new Sequelize("keyafein_db", "keyafein_root", "", {
+//keyafein_root keyafe@12345
+const db = new Sequelize("keyafein_db", "root", "", {
     host: "localhost",
     dialect: "mysql",
     pool: {
@@ -9,7 +10,6 @@ const db = new Sequelize("keyafein_db", "keyafein_root", "", {
         idle: 10000
     },
     // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-    operatorsAliases: false
 });
 db.authenticate()
     .then(() => {

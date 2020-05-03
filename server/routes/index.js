@@ -1,8 +1,14 @@
 var express = require('express');
 const multer = require('multer');
 const path = require("path");
+const models = require("../models");
 const { imageFilter } = require("../helpers/imageHelper");
 var router = express.Router();
+
+function sleepFor(sleepDuration) {
+  var now = new Date().getTime();
+  while (new Date().getTime() < now + sleepDuration) { /* do nothing */ }
+}
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -17,11 +23,11 @@ const storage = multer.diskStorage({
 });
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Keyafe Server' });
+router.get('/products', function (req, res, next) {
+  models.Product.findAll().then(prod => res.send(prod))
 });
 router.post('/upload-product-pic', (req, res) => {
-  let upload = multer({ storage: storage, fileFilter: imageFilter }).single('prod_pic');
+  let upload = multer({ storage, fileFilter: imageFilter }).single('file');
   upload(req, res, function (err) {
     // req.file contains information of uploaded file
     // req.body contains information of text fields, if there were any
@@ -41,7 +47,9 @@ router.post('/upload-product-pic', (req, res) => {
 
     // Display uploaded image for user validation
     const fileUploaded = req.protocol + "://" + req.hostname + ":5000/uploads/images/" + req.file.filename;
-    res.send(`You have uploaded this image: <hr/><img src=${fileUploaded} width="500"><hr /><a href="./">Upload another image</a>`);
+    models.Product.create({ name: "product", img_url: fileUploaded, price: 40, category: 1 }, { fields: ['name', 'img_url', 'price', 'category'] }).then(prod => {
+      res.send({ name: "product", img_url: fileUploaded, price: 40, category: 1 })
+    })
   });
 });
 
