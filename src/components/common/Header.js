@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js'
@@ -7,11 +7,15 @@ import '../../App.css';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
     Link
 } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -27,7 +31,7 @@ function Header() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-lg-auto text-lg-right text-center">
-                        <li className="nav-item active">
+                        <li className="nav-item">
                             <Link className="nav-link" to="/">Home
 								<span className="sr-only">(current)</span>
                             </Link>
@@ -52,11 +56,14 @@ function Header() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
                     </ul>
 
                     <div className="menu">
-                        <a href="#" className="navicon"></a>
-                        <div className="toggle">
+                        {show ? <a onClick={handleClose}>X</a> : <a className="navicon" onClick={handleShow}></a>}
+                        {show ?
                             <ul className="toggle-menu list-unstyled">
                                 <li>
                                     <a href="index.html">Index Page</a>
@@ -77,7 +84,7 @@ function Header() {
                                     <a href="contact.html">Contact Us</a>
                                 </li>
                             </ul>
-                        </div>
+                            : null}
                     </div>
                 </div>
             </nav>

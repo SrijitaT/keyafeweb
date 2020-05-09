@@ -1,7 +1,6 @@
 import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS } from "../actions/actionTypes";
 
 const initialState = {
-    imageDetails: {},
     showSpinner: false,
     uploadStatus: false,
     allProducts: [[], [], [], [], [], []]
@@ -9,10 +8,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case UPLOAD_IMG: {
-            const { data } = action.payload;
-            return { ...state, imageDetails: data, uploadStatus: true };
-        };
         case TOGGLE_FLAG: {
             const { var_name } = action.payload;
             return {
@@ -24,6 +19,16 @@ export default function (state = initialState, action) {
             return {
                 ...state, [var_name]: value
             }
+        }
+        case GET_ALL_PRODUCTS: {
+            const { products, category } = action.payload;
+            try {
+                state.allProducts[category] = [];
+                state.allProducts[category] = state.allProducts[category].concat(products);
+            } catch (err) {
+                console.log("Error occured!!", err);
+            }
+            return { ...state, allProducts: [...state.allProducts] }
         }
         default: return state;
     }
