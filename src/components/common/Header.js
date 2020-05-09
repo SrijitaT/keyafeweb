@@ -47,7 +47,7 @@ function Header() {
                                 </div>
                             </li>*/}
                         <li className="nav-item">
-                            <Link className="nav-link" to="/gallery">Gallery</Link>
+                            <Link className="nav-link" to="/gallery">Shop now</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact Us</Link>
@@ -81,7 +81,6 @@ function Header() {
                     </div>
                 </div>
             </nav>
-
         </header>
     );
 }

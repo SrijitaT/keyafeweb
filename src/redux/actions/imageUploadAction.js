@@ -18,9 +18,12 @@ const getAllProducts = (products) => ({
     payload: { products }
 })
 
-export const uploadImage = (file) => dispatch => {
+export const uploadImage = (prod_details) => dispatch => {
     const data = new FormData()
-    data.append('file', file);
+    data.append('file', prod_details.imageToUpload);
+    data.append('name', prod_details.prod_name);
+    data.append('price', prod_details.prod_price);
+    data.append('category', prod_details.prod_category);
     dispatch(toggleFlag("showSpinner"));
     axios
         .post("http://localhost:5000/api/upload-product-pic", data)

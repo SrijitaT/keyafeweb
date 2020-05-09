@@ -26,12 +26,13 @@ const storage = multer.diskStorage({
 router.get('/products', function (req, res, next) {
   models.Product.findAll().then(prod => res.send(prod))
 });
+
 router.post('/upload-product-pic', (req, res) => {
   let upload = multer({ storage, fileFilter: imageFilter }).single('file');
   upload(req, res, function (err) {
     // req.file contains information of uploaded file
     // req.body contains information of text fields, if there were any
-
+    let { name, price, category } = req.body;
     if (req.fileValidationError) {
       return res.send(req.fileValidationError);
     }
@@ -47,8 +48,8 @@ router.post('/upload-product-pic', (req, res) => {
 
     // Display uploaded image for user validation
     const fileUploaded = req.protocol + "://" + req.hostname + ":5000/uploads/images/" + req.file.filename;
-    models.Product.create({ name: "product", img_url: fileUploaded, price: 40, category: 1 }, { fields: ['name', 'img_url', 'price', 'category'] }).then(prod => {
-      res.send({ name: "product", img_url: fileUploaded, price: 40, category: 1 })
+    models.Product.create({ name, img_url: fileUploaded, price, category }, { fields: ['name', 'img_url', 'price', 'category'] }).then(prod => {
+      res.send({ name, img_url: fileUploaded, price, category })
     })
   });
 });

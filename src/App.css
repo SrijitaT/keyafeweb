@@ -346,7 +346,9 @@ div#slider-main {
   font-size: 50px;
   letter-spacing: 1px;
 }
-
+.bg-white{
+    background-color: white;
+}
 /* button effect */
 .button {
   position: relative;
@@ -491,7 +493,7 @@ h4.aboutright.about-right-2 {
 }
 
 .modal-title {
-  font-size: 30px;
+  font-size: 25px;
   letter-spacing: 1px;
   color: #fe3859;
   text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.18);
