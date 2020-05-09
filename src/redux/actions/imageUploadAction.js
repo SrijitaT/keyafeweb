@@ -13,10 +13,6 @@ const assignValToVar = (var_name, value) => ({
     type: ASSIGN_VAL_TO_VAR,
     payload: { var_name, value }
 })
-// const getAllProducts = (products, category) => ({
-//     type: GET_ALL_PRODUCTS,
-//     payload: { products, category }
-// })
 
 export const uploadImage = (prod_details) => dispatch => {
     const data = new FormData()
@@ -33,13 +29,3 @@ export const uploadImage = (prod_details) => dispatch => {
             setTimeout(() => dispatch(toggleFlag("uploadStatus")), 5000)
         });
 };
-
-// export const getAllProductDetails = (category) => dispatch => {
-//     axios
-//         .get("http://localhost:5000/api/products", {
-//             params: {
-//                 category
-//             }
-//         })
-//         .then(res => dispatch(getAllProducts(res.data, parseInt(category))))
-// }

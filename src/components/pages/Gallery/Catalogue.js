@@ -9,7 +9,8 @@ class Catalogue extends Component {
             <div className="gallery py-5">
                 <div className="container-fluid py-xl-5 py-lg-3">
                     <div className="title text-center mb-5">
-                        <h2 className="text-dark mb-2">Shop Now</h2>
+                        <h2 className="text-dark mb-2">Welcome to Keyafe Store</h2>
+                        <p>Hover over the images to add the item to cart. Happy ordering!</p>
                     </div>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                         <Row>

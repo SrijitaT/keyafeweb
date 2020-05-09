@@ -299,7 +299,12 @@ li.nav-item {
   margin: 10px auto;
   text-align: center;
 }
-
+.align-left{
+    text-align: left;
+}
+.align-center{
+    text-align: center;
+}
 .menu .toggle-menu li a {
   text-decoration: none;
   color: #fff;
@@ -1033,7 +1038,7 @@ p.copy-right-grids a:hover {
 }
 
 .w3_agile_portfolio_grid1:hover .agileits_w3layouts_team_grid img {
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 .w3_agile_portfolio_grid1:hover .agileits_w3layouts_team_grid .w3layouts_port_head {

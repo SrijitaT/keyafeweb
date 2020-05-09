@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllProductDetails } from 'redux/actions/productAction';
+import { Button, Row, Col } from "react-bootstrap";
 
 class ProductsByCategory extends Component {
     componentDidMount() {
@@ -15,9 +16,21 @@ class ProductsByCategory extends Component {
                         <a href="images/g1.jpg" title={prod.name}>
                             <div className="agileits_portfolio_sub_grid agileits_w3layouts_team_grid">
                                 <div className="w3layouts_port_head">
-                                    <h3>{prod.name}</h3>
+                                    <Row>
+                                        <Col sm={2} />
+                                        <Col sm={4}><h4 className="text-light align-center">Name : </h4></Col>
+                                        <Col sm={4}><h4 className="text-light align-center">{prod.name}</h4></Col>
+                                        <Col sm={2} />
+                                    </Row>
+                                    <Row>
+                                        <Col sm={2} />
+                                        <Col sm={4}><h4 className="text-light align-center">Price : </h4></Col>
+                                        <Col sm={4}><h4 className="text-light align-center">Rs {prod.price}</h4></Col>
+                                        <Col sm={2} />
+                                    </Row>
+
+                                    <Button variant="outline-light">Add to cart</Button>
                                 </div>
-                                {/*<img src={require("images/g1.jpg")} alt=" " className="img-fluid" />*/}
                                 <img src={prod.img_url} className="img-fluid" />
                             </div>
                         </a>
