@@ -1,8 +1,8 @@
 var express = require('express');
 const multer = require('multer');
 const path = require("path");
-const models = require("../models");
-const { imageFilter } = require("../helpers/imageHelper");
+const models = require("../../models");
+const { imageFilter } = require("../../helpers/imageHelper");
 var router = express.Router();
 
 function sleepFor(sleepDuration) {
@@ -12,7 +12,7 @@ function sleepFor(sleepDuration) {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '/../public/uploads/images'));
+    cb(null, path.join(__dirname, '/../../public/uploads/images'));
   },
 
   // By default, multer removes file extensions so let's add them back
@@ -24,7 +24,6 @@ const storage = multer.diskStorage({
 
 /* GET home page. */
 router.get('/products', function (req, res, next) {
-  console.log("req.params===", req.query);
   models.Product.findAll({ where: { category: parseInt(req.query.category) } }).then(prod => res.send(prod))
 });
 

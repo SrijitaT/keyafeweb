@@ -4,18 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import '../../App.css';
+import cartImg from "./cart3.png";
 import {
     BrowserRouter as Router,
     Switch,
     Link
 } from "react-router-dom";
+import { Badge } from "react-bootstrap";
+import { useSelector } from 'react-redux'
 
 function Header(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const cart = useSelector(state => state.keyafestore.cart)
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -58,6 +61,9 @@ function Header(props) {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/cart"><img src={cartImg} width={30} height={30} /><Badge variant="light">{cart.length}</Badge></Link>
                         </li>
                     </ul>
 

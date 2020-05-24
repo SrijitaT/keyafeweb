@@ -1,5 +1,10 @@
-import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS } from "./actionTypes";
+import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART } from "./actionTypes";
 import axios from "axios";
+
+export const addToCart = (cartItem) => ({
+    type: ADD_TO_CART,
+    payload: { cartItem }
+})
 const getAllProducts = (products, category) => ({
     type: GET_ALL_PRODUCTS,
     payload: { products, category }

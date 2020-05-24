@@ -15,6 +15,7 @@ import Gallery from "./components/pages/Gallery/index";
 import Contact from "./components/pages/Contact";
 import Footer from "./components/common/Footer";
 import UploadImg from "./components/pages/admin/UploadImg";
+import Cart from "./components/pages/Ecommerce/Cart";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
@@ -23,6 +24,9 @@ ReactDOM.render(
         <Router>
             <Header />
             <Switch>
+                <Route path="/cart">
+                    <Cart />
+                </Route>
                 <Route path="/about">
                     <About />
                 </Route>

@@ -840,6 +840,15 @@ p.copy-right-grids a:hover {
   letter-spacing: 1px;
   color: #000;
 }
+.cart-item{
+    /*border-radius: 2rem;
+    border:0.5px solid #d24dff;*/
+    padding: 1rem;
+    margin-bottom: 10px;
+    -webkit-box-shadow: -1px 6px 17px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 6px 17px -5px rgba(0,0,0,0.75);
+box-shadow: -1px 6px 17px -5px rgba(0,0,0,0.75);
+}
 
 /* //page details */
 /* about page */

@@ -14,16 +14,6 @@ class UploadImg extends Component {
     componentDidMount() {
         this.props.getAllProductDetails(1);
     }
-    handleShowHide(val, cb) {
-        if (typeof cb === "function") {
-            this.setState({ show: val }, cb)
-        } else {
-            this.setState({ show: val })
-        }
-    }
-    handleValueToSend(origin, prod_det) {
-        this.setState({ origin, prod_det })
-    }
     render() {
         return (
             <React.Fragment>
@@ -62,9 +52,11 @@ class UploadImg extends Component {
                                                                     Price: Rs {prod.price}<br />
                                                                     Category: {prod.category}<br />
                                                                 </Card.Text>
-                                                                <Button variant="outline-success" onClick={() => this.handleShowHide(true, this.handleValueToSend.bind(this, "edit", prod))}>
-                                                                    Edit
-                                                                </Button>
+                                                                <AddEditProductModal
+                                                                    btnName="Edit"
+                                                                    variant="outline-success"
+                                                                    title="Edit product details" prod_det={prod}
+                                                                    _id="add" /> {" "}
                                                                 <Button variant="outline-danger">Delete</Button>
                                                             </Card.Body>
                                                         </Card></div>)}
@@ -78,16 +70,13 @@ class UploadImg extends Component {
                     <Row>
                         <Col sm={10} />
                         <Col sm={2}>
-                            <Button variant="primary" onClick={() => this.handleShowHide(true, this.handleValueToSend.bind(this, "add", null))}>
-                                Add product
-                    </Button>
+                            <AddEditProductModal
+                                btnName="Add Product"
+                                variant="primary"
+                                title="Fill the form to add a product" prod_det={this.state.prod_det}
+                                _id="add" />
                         </Col>
                     </Row>
-                    <AddEditProductModal
-                        show={this.state.show}
-                        handleShowHide={this.handleShowHide.bind(this)}
-                        title={this.state.origin == "edit" ? "Edit product details" : "Fill the form to add a product"} prod_det={this.state.prod_det}
-                        _id="add" />
                 </div>
             </React.Fragment>
         )
