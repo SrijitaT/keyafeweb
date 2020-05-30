@@ -30,7 +30,7 @@ export default function Footer() {
                 </div>
                 <p className="copy-right-grids text-light my-lg-5 my-4 pb-4">© 2020 Keyafe. All Rights Reserved</p>
             </div>
-            <img src={require("../../images/chef.png")} alt="" className="img-fluid chef-style" />
+            {/*<img src={require("../../images/chef.png")} alt="" className="img-fluid chef-style" />*/}
         </footer >
     )
 }

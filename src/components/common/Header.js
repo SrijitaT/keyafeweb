@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import { Badge } from "react-bootstrap";
 import { useSelector } from 'react-redux'
+import LoginRegisterModal from "../pages/Ecommerce/LoginRegisterModal";
 
 function Header(props) {
     const [show, setShow] = useState(false);
@@ -60,7 +61,11 @@ function Header(props) {
                             <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">Login</Link>
+                            {/*<Link className="nav-link" to="/login">Login</Link>*/}
+                            <LoginRegisterModal
+                                btnName="Login"
+                                variant="outline-light"
+                                title="Login Form" />
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/cart"><img src={cartImg} width={30} height={30} /><Badge variant="light">{cart.length}</Badge></Link>
