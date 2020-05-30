@@ -17,6 +17,10 @@ class Register extends Component {
                     <Form.Label>Phone</Form.Label>
                     <Form.Control type="number" placeholder="Enter Phone" />
                 </Form.Group>
+                <Form.Group controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Your Name" />
+                </Form.Group>
                 <Form.Group controlId="formBasicAddr">
                     <Form.Label>Address</Form.Label>
                     <Form.Control type="text" placeholder="Enter Address" />
