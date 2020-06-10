@@ -1,6 +1,7 @@
 import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART } from "./actionTypes";
 import axios from "axios";
 
+const serverUrl = "http://localhost:5000/";
 export const addToCart = (cartItem) => ({
     type: ADD_TO_CART,
     payload: { cartItem }
@@ -11,7 +12,7 @@ const getAllProducts = (products, category) => ({
 });
 export const getAllProductDetails = (category) => dispatch => {
     axios
-        .get("http://localhost:5000/api/products", {
+        .get(serverUrl + "/api/products", {
             params: {
                 category
             }

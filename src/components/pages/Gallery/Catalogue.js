@@ -6,9 +6,9 @@ import ProductsByCategory from "./ProductsByCategory";
 class Catalogue extends Component {
     render() {
         return (
-            <div className="gallery py-5">
-                <div className="container-fluid py-xl-5 py-lg-3">
-                    <div className="title text-center mb-5">
+            <div className="gallery">
+                <div className="container-fluid">
+                    <div className="title text-center">
                         <h2 className="text-dark mb-2">Welcome to Keyafe Store</h2>
                         <p>Hover over the images to add the item to cart. Happy ordering!</p>
                     </div>

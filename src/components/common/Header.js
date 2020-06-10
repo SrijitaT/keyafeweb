@@ -10,16 +10,20 @@ import {
     Switch,
     Link
 } from "react-router-dom";
-import { Badge } from "react-bootstrap";
-import { useSelector } from 'react-redux'
+import { Badge, Button } from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux'
 import LoginRegisterModal from "../pages/Ecommerce/LoginRegisterModal";
+import { logoutUser } from "redux/actions/authActions";
 
 function Header(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const cart = useSelector(state => state.keyafestore.cart)
+    const dispatch = useDispatch();
+    const cart = useSelector(state => state.keyafestore.cart);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const user = useSelector(state => state.auth.user);
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -43,17 +47,6 @@ function Header(props) {
                         <li className="nav-item">
                             <Link className="nav-link" to="/about">About Us</Link>
                         </li>
-                        {/*<li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-							    </Link>
-                                <div className="dropdown-menu text-lg-left text-center" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item scroll" href="#services">Services</a>
-                                    <a className="dropdown-item scroll" href="#products" title="">New Products</a>
-                                    <a className="dropdown-item scroll" href="#news" title="">Company News</a>
-                                    <Link className="nav-link" to="/about">Team</Link>
-                                </div>
-                            </li>*/}
                         <li className="nav-item">
                             <Link className="nav-link" to="/gallery">Shop now</Link>
                         </li>
@@ -61,11 +54,23 @@ function Header(props) {
                             <Link className="nav-link" to="/contact">Contact Us</Link>
                         </li>
                         <li className="nav-item">
-                            {/*<Link className="nav-link" to="/login">Login</Link>*/}
-                            <LoginRegisterModal
-                                btnName="Login"
-                                variant="outline-light"
-                                title="Login Form" />
+                            {isAuthenticated ?
+                                <li className="nav-item dropdown">
+                                    <Link className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Welcome {user.username}
+                                    </Link>
+                                    <div className="dropdown-menu text-lg-left text-center" aria-labelledby="navbarDropdown">
+                                        <Link className="dropdown-item scroll">My orders</Link>
+                                        <Link className="dropdown-item scroll">My Profile</Link>
+                                        <Link className="dropdown-item scroll">Change password</Link>
+                                        <Link className="dropdown-item scroll" onClick={() => dispatch(logoutUser())}>Logout</Link>
+                                    </div>
+                                </li>
+                                :
+                                <LoginRegisterModal
+                                    btnName="Login"
+                                    variant="outline-light"
+                                    title="Login Form" />}
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/cart"><img src={cartImg} width={30} height={30} /><Badge variant="light">{cart.length}</Badge></Link>

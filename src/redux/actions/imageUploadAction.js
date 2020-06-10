@@ -1,6 +1,7 @@
 import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS } from "./actionTypes";
 import axios from "axios";
 
+const serverUrl = "http://localhost:5000/";
 const uploadSuccess = data => ({
     type: UPLOAD_IMG,
     payload: { data }
@@ -22,7 +23,7 @@ export const uploadImage = (prod_details) => dispatch => {
     data.append('category', prod_details.prod_category);
     dispatch(toggleFlag("showSpinner"));
     axios
-        .post("http://localhost:5000/api/upload-product-pic", data)
+        .post(serverUrl + "api/upload-product-pic", data)
         .then(res => {
             dispatch(toggleFlag("showSpinner"));
             dispatch(uploadSuccess(res.data));

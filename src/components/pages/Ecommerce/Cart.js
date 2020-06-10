@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import BannerTop from "../../common/BannerTop";
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
+
 class Cart extends Component {
     render() {
         return (
@@ -17,7 +19,7 @@ class Cart extends Component {
                             <b>GST @ 18% :</b> Rs 9<br />
                             <b>Total :</b> Rs 509<br />
                             ** Shipping & COD Charges as applicable.<br />
-                            <Button variant="outline-success" size="lg">Checkout</Button>
+                            <Link variant="outline-success" size="lg" to="/checkout">Checkout</Link>
                         </Col>
                     </Row>
                     <br />
