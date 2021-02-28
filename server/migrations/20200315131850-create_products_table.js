@@ -19,7 +19,15 @@ module.exports = {
       name: Sequelize.STRING(300),
       img_url: Sequelize.STRING(300),
       price: Sequelize.INTEGER(11),
-      category: Sequelize.STRING(50)
+      category: Sequelize.STRING(50),
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     })
   },
 

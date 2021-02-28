@@ -43,7 +43,7 @@ if (localStorage.jwtToken) {
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Header />
+          
             <Switch>
                 <Route path="/checkout">
                     <Checkout />

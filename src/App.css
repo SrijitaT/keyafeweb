@@ -152,7 +152,7 @@ li.nav-item {
   margin: 0 6px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+/*.navbar-light .navbar-nav .nav-link {
   padding: 0;
   color: #fff;
   font-size: 15px;
@@ -162,7 +162,7 @@ li.nav-item {
   padding: 8px 18px 9px;
   border-radius: 100px;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.21);
-}
+}*/
 
 .navbar-light .navbar-nav .show>.nav-link,
 .navbar-light .navbar-nav .active>.nav-link,
@@ -1213,9 +1213,9 @@ box-shadow: -1px 6px 17px -5px rgba(0,0,0,0.75);
       font-size: 32px;
   }
 
-  .navbar-light .navbar-nav .nav-link {
+  /*.navbar-light .navbar-nav .nav-link {
       font-size: 14px;
-  }
+  }*/
 
   .banner-text-agile h3 {
       font-size: 42px;
@@ -1398,11 +1398,11 @@ box-shadow: -1px 6px 17px -5px rgba(0,0,0,0.75);
       padding:1em 0 4em;
   }
 
-  .navbar-light .navbar-nav .nav-link {
+  /*.navbar-light .navbar-nav .nav-link {
       font-weight: normal;
       padding: 0;
       font-size: 15px;
-  }
+  }*/
 
   li.nav-item {
       margin: 10px 0;
