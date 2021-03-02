@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Sidebar(props) {
     console.log("props.children----",props.children);
@@ -39,40 +40,7 @@ function Sidebar(props) {
 			</div> 
 		</div>
 	</article> 
-	<article className="filter-group">
-		<h6 className="title">
-			<a href="#" className="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
-		</h6>
-		<div className="filter-content collapse show" id="collapse_2">
-			<div className="inner">
-				<label className="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" className="custom-control-input"/>
-				  <div className="custom-control-label">Adidas  
-				  	<b className="badge badge-pill badge-light float-right">120</b>  </div>
-				</label>
-				<label className="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" className="custom-control-input"/>
-				  <div className="custom-control-label">Nike 
-				  	<b className="badge badge-pill badge-light float-right">15</b>  </div>
-				</label>
-				<label className="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" className="custom-control-input"/>
-				  <div className="custom-control-label">The Noth Face 
-				  	<b className="badge badge-pill badge-light float-right">35</b> </div>
-				</label>
-				<label className="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" className="custom-control-input"/>
-				  <div className="custom-control-label">The cat 
-				  	<b className="badge badge-pill badge-light float-right">89</b> </div>
-				</label>
-				<label className="custom-control custom-checkbox">
-				  <input type="checkbox" className="custom-control-input"/>
-				  <div className="custom-control-label">Honda 
-				  	<b className="badge badge-pill badge-light float-right">30</b>  </div>
-				</label>
-			</div> 
-		</div>
-	</article> 
+	
 	<article className="filter-group">
 		<h6 className="title">
 			<a href="#" className="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Price range </a>
@@ -166,9 +134,9 @@ function Sidebar(props) {
 			</select>
 			<div className="btn-group">
 				<a href="page-listing-grid.html" className="btn btn-light" data-toggle="tooltip" title="List view"> 
-					<i className="fa fa-bars"></i></a>
+				<FontAwesomeIcon icon="bars" /></a>
 				<a href="page-listing-large.html" className="btn btn-light active" data-toggle="tooltip" title="Grid view"> 
-					<i className="fa fa-th"></i></a>
+				<FontAwesomeIcon icon="th" /></a>
 			</div>
 		</div>
 </header>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllProductDetails } from 'redux/actions/productAction';
-import { Container } from 'react-bootstrap'
-import stars from "./images/icons/stars-active.svg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class ItemList extends Component {
@@ -13,7 +12,6 @@ class ItemList extends Component {
 		}
 	}
 	componentDidMount(){
-		console.log("In component did mount---------------------");
 		this.props.getAllProductDetails();
 	}
 	render() {
@@ -34,14 +32,10 @@ class ItemList extends Component {
 				<div className="rating-wrap mb-2">
 					<ul className="rating-stars">
 						<li className="stars-active"> 
-							<i className="fa fa-star"></i> <i className="fa fa-star"></i> 
-							<i className="fa fa-star"></i> <i className="fa fa-star"></i> 
-							<i className="fa fa-star"></i> 
+						<FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" />
 						</li>
 						<li>
-							<i className="fa fa-star"></i> <i className="fa fa-star"></i> 
-							<i className="fa fa-star"></i> <i className="fa fa-star"></i> 
-							<i className="fa fa-star"></i> 
+						<FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" /><FontAwesomeIcon icon="star" />
 						</li>
 					</ul>
 					<div className="label-rating">9/10</div>
@@ -68,7 +62,7 @@ class ItemList extends Component {
 				<small className="text-warning">Paid shipping</small>
 				
 				<p className="mt-3">
-					<a href="#" className="btn btn-outline-primary"> <i className="fa fa-envelope"></i> Add to cart </a>
+					<a href="#" className="btn btn-outline-primary"><FontAwesomeIcon icon="cart-plus" /> Add to cart </a>
 				</p>
 
 				{/*<label className="custom-control mt-3 custom-checkbox">

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './components/pages/FontAwesomeIcons/index';
 import './index.css';
 import Home from './components/pages/Home/index.js';
 import * as serviceWorker from './serviceWorker';
