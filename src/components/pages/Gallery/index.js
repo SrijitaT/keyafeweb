@@ -4,9 +4,7 @@ import BannerTop from "components/common/BannerTop";
 export default class Gallery extends Component {
     render() {
         return (
-            <div>
                 <Catalogue />
-            </div>
         )
     }
 }

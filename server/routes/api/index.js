@@ -24,7 +24,11 @@ const storage = multer.diskStorage({
 
 /* GET home page. */
 router.get('/products', function (req, res, next) {
+  if(req.query.category){
   models.Product.findAll({ where: { category: parseInt(req.query.category) } }).then(prod => res.send(prod))
+  }else{
+    models.Product.findAll().then(prod=>res.send(prod))
+  }
 });
 
 router.post('/upload-product-pic', (req, res) => {

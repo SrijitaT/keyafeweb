@@ -12,10 +12,13 @@ const getAllProducts = (products, category) => ({
 });
 export const getAllProductDetails = (category) => dispatch => {
     axios
-        .get(serverUrl + "/api/products", {
+        .get(serverUrl + "api/products", {
             params: {
                 category
             }
         })
-        .then(res => dispatch(getAllProducts(res.data, parseInt(category))))
+        .then(res => {
+            console.log("res.data----------------",res.data);
+            dispatch(getAllProducts(res.data, parseInt(category)))
+         })
 }

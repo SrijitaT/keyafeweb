@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getAllProductDetails } from 'redux/actions/productAction';
 import ProductsByCategory from "./ProductsByCategory";
 import ProductHeader from "./common/Header";
+import SideBar from "./common/Sidebar";
 import ProductCarousel from "./ProductCarousel";
 import ItemList from "./ItemList";
 import {Container} from 'react-bootstrap'
@@ -13,16 +12,14 @@ class Catalogue extends Component {
         return (
             <>
             <ProductHeader/>
-            <ProductCarousel/>
-            <ItemList/>
+            <SideBar>  
+                <ItemList/>
+            </SideBar>
+            {/*<ProductCarousel/>*/}
+          
           </>
         )
     }
 }
-const mapStateToProps = state => ({
-    allProducts: state.keyafestore.allProducts
-});
-export default connect(
-    mapStateToProps,
-    { getAllProductDetails }
-)(Catalogue);
+
+export default Catalogue;

@@ -3,7 +3,7 @@ import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODU
 const initialState = {
     showSpinner: false,
     uploadStatus: false,
-    allProducts: [[], [], [], [], [], []],
+    allProducts: [],
     cart: []
 };
 
@@ -23,13 +23,8 @@ export default function (state = initialState, action) {
         }
         case GET_ALL_PRODUCTS: {
             const { products, category } = action.payload;
-            try {
-                state.allProducts[category] = [];
-                state.allProducts[category] = state.allProducts[category].concat(products);
-            } catch (err) {
-                console.log("Error occured!!", err);
-            }
-            return { ...state, allProducts: [...state.allProducts] }
+            console.log(" state.allProducts------", state.allProducts);
+            return { ...state, allProducts: [...products] }
         }
         case ADD_TO_CART: {
             const { cartItem } = action.payload;

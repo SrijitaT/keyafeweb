@@ -6,7 +6,7 @@ import third from "./slides/3.jpg";
 
 function ProductCarousel() {
     return (
-      <section class="section-intro padding-y">
+      <section className="section-intro padding-y">
         <Container fluid>
         <div id="carousel1_indicator" className="slider-home-banner carousel slide" data-ride="carousel">
         <Carousel>
