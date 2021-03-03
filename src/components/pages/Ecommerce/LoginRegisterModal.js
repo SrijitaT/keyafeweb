@@ -8,11 +8,16 @@ class LoginRegisterModal extends Component {
     state = {
         register: false
     }
-    showRegisterForm = () => {
-        this.setState({ register: true }, () => this.props.changeTitle("Registration Form"))
+    toggleLoginRegForm = () => {
+        this.setState({ register: !this.state.register }, () => {
+            if(this.state.register)
+                this.props.changeTitle("Registration Form")
+            else
+                this.props.changeTitle("Login Form")
+        })
     }
     render() {
-        return this.state.register ? <Register /> : <Login showRegisterForm={this.showRegisterForm.bind(this)} />
+        return this.state.register ? <Register toggleLoginRegForm={this.toggleLoginRegForm.bind(this)}/> : <Login toggleLoginRegForm={this.toggleLoginRegForm.bind(this)} />
     }
 }
 export default ModalHOC(LoginRegisterModal);

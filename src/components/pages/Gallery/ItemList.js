@@ -59,7 +59,6 @@ class ItemList extends Component {
 					<span className="h5 price">Rs {item.price}</span> 
 					<small className="text-muted">/per pound</small>
 				</div> 
-				<small className="text-warning">Paid shipping</small>
 				
 				<p className="mt-3">
 					<a href="#" className="btn btn-outline-primary"><FontAwesomeIcon icon="cart-plus" /> Add to cart </a>

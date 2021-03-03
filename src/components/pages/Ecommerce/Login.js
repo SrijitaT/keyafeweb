@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { loginUser } from "redux/actions/authActions";
+import {Link} from "react-router-dom";
 
 class Login extends Component {
     constructor() {
@@ -39,14 +40,15 @@ class Login extends Component {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" onChange={e => this.onChange(e)} />
                 </Form.Group>
+                <div className="form-group">
+          	    <a href="#" className="float-right">Forgot password?</a> 
+                {/*<label className="float-left custom-control custom-checkbox"> <input type="checkbox" className="custom-control-input" checked=""/> <div className="custom-control-label"> Remember </div> </label>*/}
+                </div>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button><br />
             </Form>
-            <p>If you dont have an account, please click the register button!!</p>
-            <Button variant="success" type="button" onClick={() => this.props.showRegisterForm()}>
-                Register
-            </Button>
+            <p class="text-center mt-4">Don't have account? <Link onClick={() => this.props.toggleLoginRegForm()}>Sign up</Link></p>
             </>
         )
     }

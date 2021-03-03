@@ -1,9 +1,21 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import '../style/ui.css';
 import { Tab, Nav, Col, Row, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import keyafelogo from "../images/Keyafefinal.png";
+import { useSelector, useDispatch } from 'react-redux'
+import LoginRegisterModal from "../../Ecommerce/LoginRegisterModal";
+import { logoutUser } from "redux/actions/authActions";
 
 function ProductHeader() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.keyafestore.cart);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const user = useSelector(state => state.auth.user);
     return (
       <header className="section-header">
       <section className="header-main border-bottom">
@@ -11,7 +23,7 @@ function ProductHeader() {
           <div className="row align-items-center">
             <div className="col-xl-2 col-lg-3 col-md-12">
               <a href="http://bootstrap-ecommerce.com" className="brand-wrap">
-                <img className="logo" src="images/logo.png"/>
+               <img className="logo" src={keyafelogo}/>
               </a> 
             </div>
             <div className="col-xl-6 col-lg-5 col-md-6">
@@ -35,13 +47,17 @@ function ProductHeader() {
             <div className="col-xl-4 col-lg-4 col-md-6">
               <div className="widgets-wrap float-md-right">
                 <div className="widget-header mr-3">
-                  <a href="#" className="widget-view">
-                    <div className="icon-area">
+                  
+                   {/* <div className="icon-area">
                     <FontAwesomeIcon icon="user" />
                       <span className="notify">3</span>
                     </div>
-                    <small className="text"> My profile </small>
-                  </a>
+                      <small className="text"> My profile </small>
+                  */}
+                          <LoginRegisterModal
+                           btnName="Login"
+                           variant="outline-light"
+                          title="Login Form" />
                 </div>
                 <div className="widget-header mr-3">
                   <a href="#" className="widget-view">
