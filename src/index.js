@@ -12,12 +12,12 @@ import {
 } from "react-router-dom";
 import Header from "./components/common/Header.js";
 import About from "./components/pages/About.js";
-import Gallery from "./components/pages/Gallery/index";
+import Shopping from "./components/pages/shopping/index";
 import Contact from "./components/pages/Contact";
 import Footer from "./components/common/Footer";
 import UploadImg from "./components/pages/admin/UploadImg";
-import Cart from "./components/pages/Ecommerce/Cart";
-import Checkout from "./components/pages/Ecommerce/Checkout";
+import Cart from "./components/pages/cart";
+import Checkout from "./components/pages/cart/Checkout";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "redux/helpers/setAuthToken";
@@ -55,8 +55,8 @@ ReactDOM.render(
                 <Route path="/about">
                     <About />
                 </Route>
-                <Route path="/gallery">
-                    <Gallery />
+                <Route path="/shopping">
+                    <Shopping />
                 </Route>
                 <Route path="/contact">
                     <Contact />

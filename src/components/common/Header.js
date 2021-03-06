@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
-import LoginRegisterModal from "../pages/Ecommerce/LoginRegisterModal";
+import LoginRegisterModal from "../pages/authentication/LoginRegisterModal";
 import { logoutUser } from "redux/actions/authActions";
 
 function Header(props) {
@@ -48,7 +48,7 @@ function Header(props) {
                             <Link className="nav-link" to="/about">About Us</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/gallery">Shop now</Link>
+                            <Link className="nav-link" to="/shopping">Shop now</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact Us</Link>

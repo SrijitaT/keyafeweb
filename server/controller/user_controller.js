@@ -12,6 +12,7 @@ const registerUser = async (req, res) => {
        return res.status(400).json(errors);
      }*/
     const errors = {};
+    console.log("req.body.email---",req.body);
     const user = await models.User.findOne({ where: { email: req.body.email } });
     if (user) {
         errors.email = "Email already exists!";
