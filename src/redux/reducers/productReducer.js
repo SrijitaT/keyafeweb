@@ -23,7 +23,6 @@ export default function (state = initialState, action) {
         }
         case GET_ALL_PRODUCTS: {
             const { products, category } = action.payload;
-            console.log(" state.allProducts------", state.allProducts);
             return { ...state, allProducts: [...products] }
         }
         case ADD_TO_CART: {
