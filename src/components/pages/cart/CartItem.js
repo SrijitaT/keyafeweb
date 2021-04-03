@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CounterComp from 'components/common/CounterComp';
 
 
 class CartItem extends Component {
@@ -32,14 +33,17 @@ class CartItem extends Component {
 			                    </figcaption>
 		                        </figure>
 	                            </td>
+                                <td> 
+		                           <CounterComp value={cartItem.pound?cartItem.pound:1}/>
+	                            </td>
 	                            <td> 
-		                        <select className="form-control" value={cartItem.qty}>
-			                    <option>1</option>
-			                    <option>2</option>	
-			                    <option>3</option>	
-			                    <option>4</option>	
-		                        </select> 
-	                    </td>
+		                            <select className="form-control" value={cartItem.qty}>
+			                        <option>1</option>
+			                        <option>2</option>	
+			                        <option>3</option>	
+			                        <option>4</option>	
+		                            </select> 
+	                             </td>
 	                    <td> 
 		                    <div className="price-wrap"> 
 			                    <var className="price">Rs {cartItem.total_price}</var> 
@@ -55,7 +59,7 @@ class CartItem extends Component {
                                 </td>
 	                    <td className="text-right"> 
 	                            <a data-original-title="Save to Wishlist" title="" href="" className="btn btn-light" data-toggle="tooltip"> <FontAwesomeIcon icon="heart" /></a> 
-	                            <a data-original-title="Save to Wishlist" title="" href="" className="btn btn-danger" data-toggle="tooltip"> <FontAwesomeIcon icon="trash" /></a> 
+	                            <a data-original-title="Remove" title="" href="" className="btn btn-danger" data-toggle="tooltip"> <FontAwesomeIcon icon="trash" /></a> 
 	                    </td>
                     </tr> 
                         )
