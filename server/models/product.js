@@ -12,7 +12,15 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     img_url: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    category: DataTypes.STRING
+    category_id: {
+      type: Sequelize.INTEGER(11),
+      references: {
+        model: 'Categories', // name of Target model
+        key: 'id', // key in Target model that we're referencing
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    }
   }, {});
   Product.associate = function (models) {
     // associations can be defined here

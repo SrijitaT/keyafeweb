@@ -44,7 +44,6 @@ if (localStorage.jwtToken) {
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-          
             <Switch>
                 <Route path="/checkout">
                     <Checkout />

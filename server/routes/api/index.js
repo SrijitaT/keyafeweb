@@ -24,19 +24,19 @@ const storage = multer.diskStorage({
 
 /* GET home page. */
 router.get('/products', function (req, res, next) {
-  if(req.query.category){
-  models.Product.findAll({ where: { category: parseInt(req.query.category) } }).then(prod => res.send(prod))
+  if(req.query.category_id){
+  models.Product.findAll({ where: { category_id: parseInt(req.query.category_id)} }).then(prod => res.send(prod))
   }else{
     models.Product.findAll().then(prod=>res.send(prod))
   }
 });
 
-router.post('/upload-product-pic', (req, res) => {
+router.post('/uploadCatalog', (req, res) => {
   let upload = multer({ storage, fileFilter: imageFilter }).single('file');
   upload(req, res, function (err) {
     // req.file contains information of uploaded file
     // req.body contains information of text fields, if there were any
-    let { name, price, category } = req.body;
+    let { name, price, category_id } = req.body;
     if (req.fileValidationError) {
       return res.send(req.fileValidationError);
     }
@@ -52,9 +52,10 @@ router.post('/upload-product-pic', (req, res) => {
 
     // Display uploaded image for user validation
     const fileUploaded = req.protocol + "://" + req.hostname + ":5000/uploads/images/" + req.file.filename;
-    models.Product.create({ name, img_url: fileUploaded, price, category }, { fields: ['name', 'img_url', 'price', 'category'] }).then(prod => {
-      res.send({ name, img_url: fileUploaded, price, category })
-    })
+    models.Product.create({ name, img_url: fileUploaded, price, category_id }, { fields: ['name', 'img_url', 'price', 'category_id'] })
+    .then(prod => {
+      res.send({ name, img_url: fileUploaded, price, category_id })
+    }).catch(err => res.status(500).send({error:err.message}))
   });
 });
 

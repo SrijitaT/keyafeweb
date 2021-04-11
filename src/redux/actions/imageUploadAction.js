@@ -23,7 +23,7 @@ export const uploadImage = (prod_details) => dispatch => {
     data.append('category', prod_details.prod_category);
     dispatch(toggleFlag("showSpinner"));
     axios
-        .post(serverUrl + "api/upload-product-pic", data)
+        .post(serverUrl + "api/uploadCatalog", data)
         .then(res => {
             dispatch(toggleFlag("showSpinner"));
             dispatch(uploadSuccess(res.data));
