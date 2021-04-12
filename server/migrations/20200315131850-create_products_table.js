@@ -19,6 +19,7 @@ module.exports = {
       name: Sequelize.STRING(300),
       img_url: Sequelize.STRING(300),
       price: Sequelize.INTEGER(11),
+      description : Sequelize.STRING(1000),
       category_id: {
         type: Sequelize.INTEGER(11),
         references: {

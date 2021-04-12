@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
-    }
+    },
+    description : DataTypes.STRING
   }, {});
   Product.associate = function (models) {
     // associations can be defined here

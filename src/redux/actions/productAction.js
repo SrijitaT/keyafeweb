@@ -22,3 +22,12 @@ export const getAllProductDetails = (category) => dispatch => {
             dispatch(getAllProducts(res.data, parseInt(category)))
          })
 }
+
+export const getCategories = () => dispatch => {
+    axios
+        .get(serverUrl + "api/categories")
+        .then(res => {
+            console.log("res.data----------------",res.data);
+            dispatch(getAllProducts(res.data, parseInt(category)))
+         })
+}

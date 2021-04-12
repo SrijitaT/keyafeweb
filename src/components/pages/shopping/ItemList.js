@@ -18,7 +18,7 @@ class ItemList extends Component {
 	render() {
 		return (
 			<>
-			{this.props.allProducts.length>0	?  this.props.allProducts.map(item=>
+			{ this.props.allProducts.length>0 ? this.props.allProducts.map(item=>
 	<article className="card card-product-list">
 	<div className="row no-gutters">
 		<aside className="col-md-3">
@@ -49,8 +49,7 @@ class ItemList extends Component {
 					<span className="tag"> Russia </span>
 				</p>
 
-				<p> Take it as demo specs, ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim  sint occaecat cupidatat non
-				proident, sunt in culpa qui laborum.... </p>
+				<p> {`${item.description.substring(0,150)}....`} </p>
 
 			</div> 
 		</div> 
@@ -75,8 +74,6 @@ class ItemList extends Component {
 		</aside> 
 	</div> 
 </article>): null}
-			
-
 </>
 		)
 	}

@@ -23,12 +23,19 @@ const storage = multer.diskStorage({
 });
 
 /* GET home page. */
+
 router.get('/products', function (req, res, next) {
   if(req.query.category_id){
   models.Product.findAll({ where: { category_id: parseInt(req.query.category_id)} }).then(prod => res.send(prod))
   }else{
-    models.Product.findAll().then(prod=>res.send(prod))
+    models.Product.findAll().then(prod => res.send(prod))
   }
+});
+
+router.get('/categories', function (req, res, next) {
+  models.Categories.findAll()
+  .then(prod => res.send(prod))
+  .catch(err => res.statusCode(500).send({err}))
 });
 
 router.post('/uploadCatalog', (req, res) => {
