@@ -28,6 +28,6 @@ export const getCategories = () => dispatch => {
         .get(serverUrl + "api/categories")
         .then(res => {
             console.log("res.data----------------",res.data);
-            dispatch(getAllProducts(res.data, parseInt(category)))
+            //dispatch(getAllProducts(res.data, parseInt(category)))
          })
 }
