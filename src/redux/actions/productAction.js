@@ -1,4 +1,4 @@
-import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART } from "./actionTypes";
+import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART,GET_CATEGORIES } from "./actionTypes";
 import axios from "axios";
 
 const serverUrl = "http://localhost:5000/";
@@ -10,6 +10,12 @@ const getAllProducts = (products, category) => ({
     type: GET_ALL_PRODUCTS,
     payload: { products, category }
 });
+
+const getCategoriesDet = (categories) => ({
+    type: GET_CATEGORIES,
+    payload: { categories }
+});
+
 export const getAllProductDetails = (category) => dispatch => {
     axios
         .get(serverUrl + "api/products", {
@@ -28,6 +34,6 @@ export const getCategories = () => dispatch => {
         .get(serverUrl + "api/categories")
         .then(res => {
             console.log("res.data----------------",res.data);
-            //dispatch(getAllProducts(res.data, parseInt(category)))
+            dispatch(getCategoriesDet(res.data))
          })
 }

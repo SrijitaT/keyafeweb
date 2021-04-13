@@ -1,8 +1,15 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getCategories } from 'redux/actions/productAction';
+import { Link } from "react-router-dom";
 
 function Sidebar(props) {
-    console.log("props.children----",props.children);
+	const dispatch = useDispatch();
+    const categories = useSelector(state => state.keyafestore.categories);
+	useEffect(() => {
+		dispatch(getCategories());
+	  }, [dispatch]);
     return (
         <section className="section-content padding-y">
             <div className="container-fluid">
@@ -29,13 +36,10 @@ function Sidebar(props) {
 		<div className="filter-content collapse show" id="collapse_1">
 			<div className="inner">
 				<ul className="list-menu">
-					<li><a href="#">Shorts  </a></li>
-					<li><a href="#">Trousers </a></li>
-					<li><a href="#">Sweaters  </a></li>
-					<li><a href="#">Clothes  </a></li>
-					<li><a href="#">Home items </a></li>
-					<li><a href="#">Jackats</a></li>
-					<li><a href="#">Somethings </a></li>
+					{
+						categories.map(cat=><li key={cat.id}><Link to="/">{cat.category}  </Link></li>)
+					}
+					
 				</ul>
 			</div> 
 		</div>
@@ -92,7 +96,7 @@ function Sidebar(props) {
 	</article> 
 	<article className="filter-group">
 		<h6 className="title">
-			<a href="#" className="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Condition </a>
+			<a href="#" className="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Flavour/Variations </a>
 		</h6>
 		<div className="filter-content collapse show" id="collapse_5">
 			<div className="inner">
