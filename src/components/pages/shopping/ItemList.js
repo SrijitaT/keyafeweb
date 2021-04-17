@@ -13,20 +13,20 @@ class ItemList extends Component {
 		this.addToCart = this.props.addToCart.bind(this);
 	}
 	componentDidMount(){
-		this.props.getAllProductDetails();
+		this.props.getAllProductDetails(0);
 	}
 	render() {
 		return (
 			<>
 			{ this.props.allProducts.length>0 ? this.props.allProducts.map(item=>
-	<article className="card card-product-list">
-	<div className="row no-gutters">
-		<aside className="col-md-3">
-			<a href="#" className="img-wrap">
-				{/*<span className="badge badge-danger"> NEW </span>*/}
-				<img src={item.img_url}/>
-			</a>
-		</aside> 
+				<article className="card card-product-list">
+					<div className="row no-gutters">
+						<aside className="col-md-3">
+							<a href="#" className="img-wrap">
+								{/*<span className="badge badge-danger"> NEW </span>*/}
+								<img src={item.img_url}/>
+							</a>
+						</aside> 
 		<div className="col-md-6">
 			<div className="info-main">
 				<a href="#" className="h5 title"> {item.name}</a>
@@ -42,12 +42,12 @@ class ItemList extends Component {
 					<div className="label-rating">9/10</div>
 				</div> 
 			
-				<p className="mb-3">
+				{/*<p className="mb-3">
 					<span className="tag"> <i className="fa fa-check"></i> Verified</span> 
 					<span className="tag"> 5 Years </span> 
 					<span className="tag"> 80 reviews </span>
 					<span className="tag"> Russia </span>
-				</p>
+				</p>*/}
 
 				<p> {`${item.description.substring(0,150)}....`} </p>
 
@@ -68,7 +68,7 @@ class ItemList extends Component {
 					  <input type="checkbox" className="custom-control-input"/>
 				  	  <div className="custom-control-label">Add to compare
 				  </div>
-			</label>*/}
+				</label>*/}
 
 			</div> 
 		</aside> 

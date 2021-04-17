@@ -24,17 +24,25 @@ const storage = multer.diskStorage({
 
 /* GET home page. */
 
-router.get('/products', function (req, res, next) {
-  if(req.query.category_id){
+router.get('/products/:offset', function (req, res, next) {
+  /*if(req.query.category_id){
   models.Product.findAll({ where: { category_id: parseInt(req.query.category_id)} }).then(prod => res.send(prod))
-  }else{
-    models.Product.findAll().then(prod => res.send(prod))
-  }
+  }else{*/
+    models.Product.findAll({offset:parseInt(req.params.offset),limit:10})
+    .then(prod => res.send(prod))
+    .catch(err => console.log(err))
+  //}
 });
 
 router.get('/categories', function (req, res, next) {
   models.Categories.findAll()
-  .then(prod => res.send(prod))
+  .then(cat => res.send(cat))
+  .catch(err => res.statusCode(500).send({err}))
+});
+
+router.get('/flavours', function (req, res, next) {
+  models.Flavours.findAll()
+  .then(fl => res.send(fl))
   .catch(err => res.statusCode(500).send({err}))
 });
 
@@ -43,7 +51,7 @@ router.post('/uploadCatalog', (req, res) => {
   upload(req, res, function (err) {
     // req.file contains information of uploaded file
     // req.body contains information of text fields, if there were any
-    let { name, price, category_id } = req.body;
+    let { name, price, category_id, flavour_id } = req.body;
     if (req.fileValidationError) {
       return res.send(req.fileValidationError);
     }
@@ -58,10 +66,10 @@ router.post('/uploadCatalog', (req, res) => {
     }
 
     // Display uploaded image for user validation
-    const fileUploaded = req.protocol + "://" + req.hostname + ":5000/uploads/images/" + req.file.filename;
-    models.Product.create({ name, img_url: fileUploaded, price, category_id }, { fields: ['name', 'img_url', 'price', 'category_id'] })
+    const fileUploaded = req.protocol + "://" + req.hostname + ":5000/"+"uploads/images/" + req.file.filename;
+    models.Product.create({ name, img_url: fileUploaded, price, category_id, flavour_id }, { fields: ['name', 'img_url', 'price', 'category_id', 'flavour_id'] })
     .then(prod => {
-      res.send({ name, img_url: fileUploaded, price, category_id })
+      res.send({ name, img_url: fileUploaded, price, category_id, flavour_id })
     }).catch(err => res.status(500).send({error:err.message}))
   });
 });

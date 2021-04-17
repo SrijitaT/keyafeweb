@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getCategories } from 'redux/actions/productAction';
+import { getAttrAction } from 'redux/actions/productAction';
 import { Link } from "react-router-dom";
 
 function Sidebar(props) {
 	const dispatch = useDispatch();
+	const productsLen = useSelector(state => state.keyafestore.allProducts.length)
     const categories = useSelector(state => state.keyafestore.categories);
+	const flavours = useSelector(state => state.keyafestore.flavours);
 	useEffect(() => {
-		dispatch(getCategories());
+		dispatch(getAttrAction("categories","categories"));
+		dispatch(getAttrAction("flavours","flavours"));
 	  }, [dispatch]);
     return (
         <section className="section-content padding-y">
@@ -55,11 +58,11 @@ function Sidebar(props) {
 				<div className="form-row">
 				<div className="form-group col-md-6">
 				  <label>Min</label>
-				  <input className="form-control" placeholder="$0" type="number"/>
+				  <input className="form-control" placeholder="&#x20B9;0" type="number"/>
 				</div>
 				<div className="form-group text-right col-md-6">
 				  <label>Max</label>
-				  <input className="form-control" placeholder="$1,0000" type="number"/>
+				  <input className="form-control" placeholder="&#x20B9;1,000" type="number"/>
 				</div>
 				</div> 
 				<button className="btn btn-block btn-primary">Apply</button>
@@ -100,36 +103,22 @@ function Sidebar(props) {
 		</h6>
 		<div className="filter-content collapse show" id="collapse_5">
 			<div className="inner">
-				<label className="custom-control custom-radio">
-				  <input type="radio" name="myfilter_radio" checked="" className="custom-control-input"/>
-				  <div className="custom-control-label">Any condition</div>
-				</label>
-
-				<label className="custom-control custom-radio">
-				  <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-				  <div className="custom-control-label">Brand new </div>
-				</label>
-
-				<label className="custom-control custom-radio">
-				  <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-				  <div className="custom-control-label">Used items</div>
-				</label>
-
-				<label className="custom-control custom-radio">
-				  <input type="radio" name="myfilter_radio" className="custom-control-input"/>
-				  <div className="custom-control-label">Very old</div>
-				</label>
+			{
+						flavours.map(fl=><label key={fl.id} className="custom-control custom-radio">
+						<input type="radio" name="myfilter_radio" checked="" className="custom-control-input"/>
+						<div className="custom-control-label">{fl.variety}</div>
+					  </label>)
+			}
 			</div> 
 		</div>
 	</article> 
-
 	</aside> 
 	<main className="col-md-10">
 
 
 <header className="mb-3">
 		<div className="form-inline">
-			<strong className="mr-md-auto">32 Items found </strong>
+			<strong className="mr-md-auto">{productsLen} Items found </strong>
 			<select className="mr-2 form-control">
 				<option>Latest items</option>
 				<option>Trending</option>

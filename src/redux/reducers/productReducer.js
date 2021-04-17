@@ -1,11 +1,12 @@
-import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART, GET_CATEGORIES } from "../actions/actionTypes";
+import { UPLOAD_IMG, SHOW_SPINNER, TOGGLE_FLAG, ASSIGN_VAL_TO_VAR, GET_ALL_PRODUCTS, ADD_TO_CART, GET_ATTRIBUTES,GET_CATEGORIES, GET_FLAVOURS } from "../actions/actionTypes";
 
 const initialState = {
     showSpinner: false,
     uploadStatus: false,
     allProducts: [],
     cart: [],
-    categories:[]
+    categories:[],
+    flavours : []
 };
 
 export default function (state = initialState, action) {
@@ -26,10 +27,14 @@ export default function (state = initialState, action) {
             const { products, category } = action.payload;
             return { ...state, allProducts: [...products] }
         }
-        case GET_CATEGORIES: {
-            const { categories } = action.payload;
-            console.log("categories----",categories);
-            return { ...state, categories: state.categories.concat(categories) }
+        case GET_ATTRIBUTES: {
+            const { key,value } = action.payload;
+            //console.log("categories----",categories);
+            return { ...state, [key]: state[key].concat(value) }
+        }
+        case GET_FLAVOURS:{
+            const { fl } = action.payload;
+            return { ...state, categories: state.flavors.concat(fl) }
         }
         case ADD_TO_CART: {
             const { cartItem } = action.payload;

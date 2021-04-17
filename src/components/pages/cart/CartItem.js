@@ -44,6 +44,14 @@ class CartItem extends Component {
 			                        <option>4</option>	
 		                            </select> 
 	                             </td>
+                                 <td> 
+		                            <select className="form-control" value={cartItem.qty}>
+			                        <option>1</option>
+			                        <option>2</option>	
+			                        <option>3</option>	
+			                        <option>4</option>	
+		                            </select> 
+	                             </td>
 	                    <td> 
 		                    <div className="price-wrap"> 
 			                    <var className="price">Rs {cartItem.total_price}</var> 

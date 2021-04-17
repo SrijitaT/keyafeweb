@@ -21,6 +21,15 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
+    flavour_id: {
+      type: Sequelize.INTEGER(11),
+      references: {
+        model: 'Flavours', // name of Target model
+        key: 'id', // key in Target model that we're referencing
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    },
     description : DataTypes.STRING
   }, {});
   Product.associate = function (models) {

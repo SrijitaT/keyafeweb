@@ -29,6 +29,15 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
+      flavour_id: {
+        type: Sequelize.INTEGER(11),
+        references: {
+          model: 'Flavours', // name of Target model
+          key: 'id', // key in Target model that we're referencing
+        },
+        onUpdate: 'SET NULL',
+        onDelete: 'CASCADE'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

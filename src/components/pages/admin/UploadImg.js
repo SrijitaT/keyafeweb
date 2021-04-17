@@ -12,7 +12,7 @@ class UploadImg extends Component {
         this.state = { show: false, prod_det: null, origin: "" }
     }
     componentDidMount() {
-        this.props.getAllProductDetails(1);
+        this.props.getAllProductDetails();
     }
     render() {
         return (
