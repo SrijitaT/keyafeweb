@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LoginRegisterModal from "../authentication/LoginRegisterModal";
 import PropTypes from 'prop-types';
 
-class shippingForm extends React.Component {
+class ShippingForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -17,24 +17,20 @@ class shippingForm extends React.Component {
                     <h3>Contact Information</h3>
                     </div>
                     <div className="form-group col-md-6">
-                        <h5>Already have an account?  <LoginRegisterModal
-                                    btnName="Login"
-                                    variant="outline-light"
-                                    title="Login Form" 
-                                    icon = "no"
-                                    /></h5>
+                        <h5>Already have an account?  <LoginRegisterModal btnName="Login" variant="outline-light" title="Login Form"  icon = "no"/>
+                        </h5>
                     </div>
             </div>
             <div className="form-row">
                     <div className="form-group col-md-12">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" className="form-control" id="inputfname" placeholder="Email"/>
+                        <label for="inputEmail">Email</label>
+                        <input type="email" className="form-control" id="inputEmail" placeholder="Email"/>
                     </div>
             </div>
             <h3>Shipping Address</h3>
                 <div className="form-row">
                     <div className="form-group col-md-6">
-                        <label for="inputEmail4">First Name</label>
+                        <label for="inputfname">First Name</label>
                         <input type="text" className="form-control" id="inputfname" placeholder="First Name"/>
                     </div>
                 <div className="form-group col-md-6">
@@ -63,16 +59,13 @@ class shippingForm extends React.Component {
   <div className="form-row">
   <div className="form-group col-md-4">
       <label for="inputCountry">Country/Region</label>
-      <select id="inputCountry" className="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
+      <input type="text" className="form-control" id="inputCountry" value="India"/>
     </div>
     <div className="form-group col-md-4">
       <label for="inputState">State</label>
       <select id="inputState" className="form-control">
         <option selected>Choose...</option>
-        <option>...</option>
+        <option>West Bengal</option>
       </select>
     </div>
     <div className="form-group col-md-4">
@@ -93,6 +86,6 @@ class shippingForm extends React.Component {
     }
 }
 
-shippingForm.propTypes = {};
+ShippingForm.propTypes = {};
 
-export default shippingForm;
+export default ShippingForm;

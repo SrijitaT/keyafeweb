@@ -37,6 +37,19 @@ class Register extends Component {
 					  <input type="text" className="form-control"/>
 				</div> 
 				<div className="form-row">
+				<div className="form-group col-md-6">
+					  <label>Country/Region</label>
+					  <input type="text" className="form-control" value="India"/>
+				</div> 
+				<div className="form-group col-md-6">
+					  <label>State</label>
+					  <select id="inputState" className="form-control">
+					    <option> Choose...</option>
+					      <option selected="">West Bengal</option>
+					  </select>
+					</div> 
+				</div> 
+				<div className="form-row">
 					<div className="form-group col-md-6">
 					  <label>City</label>
 					  <select id="inputCity" className="form-control">

@@ -14,7 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     address: DataTypes.STRING,
     pincode: DataTypes.INTEGER,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    country : {
+      type : DataTypes.STRING,
+      default: "India"
+    },
+    state : {
+      type : DataTypes.STRING,
+      default: "West Bengal"
+    },
+    city : {
+      type:DataTypes.STRING,
+      default: "Kolkata"
+    },
+    isRegistered: DataTypes.BOOLEAN
   }, {
       hooks: {
         async beforeCreate(user) {

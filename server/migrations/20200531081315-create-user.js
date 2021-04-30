@@ -26,6 +26,18 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      country:{
+        type: Sequelize.STRING(30),
+        default:"India"
+      },
+      city:{
+        type: Sequelize.STRING(30),
+        default:"Kolkata"
+      },
+      state:{
+        type: Sequelize.STRING(30),
+        default:"West Bengal"
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
