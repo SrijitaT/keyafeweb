@@ -24,9 +24,9 @@ const ModalHOC = (ModalBody, props) => {
             return (
                 <>
                 <Link className="widget-view" variant={this.props.variant} onClick={() => this.handleShowHide(true, this.props.onClickDataPopulate)}>
-                    <div className="icon-area">
+                    {this.props.icon=="no" ? null : <div className="icon-area">
                         <FontAwesomeIcon icon="sign-in-alt" />
-                    </div>
+                    </div>}
                     <small className="text"> Login/Register </small>
                 </Link>
                 <Modal show={this.state.show} onHide={() => this.handleShowHide(false)}>

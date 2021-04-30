@@ -4,7 +4,7 @@ const initialState = {
     showSpinner: false,
     uploadStatus: false,
     allProducts: [],
-    cart: [],
+    cart: {items : [],sub_total:0},
     categories:[],
     flavours : []
 };
@@ -38,19 +38,21 @@ export default function (state = initialState, action) {
         }
         case ADD_TO_CART: {
             const { cartItem } = action.payload;
-            const cartItemIndex = state.cart.findIndex(item => item.id == cartItem.id);
+            const cartItemIndex = state.cart.items.findIndex(item => item.id == cartItem.id);
 
             if (cartItemIndex >= 0) {
-                state.cart[cartItemIndex].qty++;
-                state.cart[cartItemIndex].total_price = parseInt(state.cart[cartItemIndex].price) * state.cart[cartItemIndex].qty;
+                state.cart.items[cartItemIndex].qty++;
+                state.cart.items[cartItemIndex].total_price = parseInt(state.cart.items[cartItemIndex].price) * state.cart.items[cartItemIndex].qty;
+                state.cart.sub_total+=state.cart.items[cartItemIndex].total_price;
             } else {
                 const finalCartItem = { ...cartItem };
                 finalCartItem.qty = 1;
                 finalCartItem.schd_date = new Date();
                 finalCartItem.total_price = parseInt(finalCartItem.price);
-                state.cart = state.cart.concat(finalCartItem);
+                state.cart.sub_total+=finalCartItem.total_price;
+                state.cart.items = state.cart.items.concat(finalCartItem);
             }
-            return { ...state, cart: [...state.cart] }
+            return { ...state, cart: {"items":[...state.cart.items], "sub_total":state.cart.sub_total} }
         }
         default: return state;
     }

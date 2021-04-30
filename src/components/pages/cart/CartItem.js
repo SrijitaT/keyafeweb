@@ -37,27 +37,14 @@ class CartItem extends Component {
 		                           <CounterComp value={cartItem.pound?cartItem.pound:1}/>
 	                            </td>
 	                            <td> 
-		                            <select className="form-control" value={cartItem.qty}>
-			                        <option>1</option>
-			                        <option>2</option>	
-			                        <option>3</option>	
-			                        <option>4</option>	
-		                            </select> 
+									<CounterComp value={cartItem.qty}/>
 	                             </td>
-                                 <td> 
-		                            <select className="form-control" value={cartItem.qty}>
-			                        <option>1</option>
-			                        <option>2</option>	
-			                        <option>3</option>	
-			                        <option>4</option>	
-		                            </select> 
-	                             </td>
-	                    <td> 
-		                    <div className="price-wrap"> 
-			                    <var className="price">Rs {cartItem.total_price}</var> 
-			                    <small className="text-muted"> Rs {cartItem.price} each </small> 
-		                    </div> 
-	                    </td>
+	                    		<td> 
+		                    		<div className="price-wrap"> 
+			                    		<var className="price">Rs {cartItem.total_price}</var> 
+			                    		<small className="text-muted"> Rs {cartItem.price} each </small> 
+		                    		</div> 
+	                    		</td>
                         <td>
                                     <DatePicker
                                         selected={cartItem.schd_date}
@@ -78,6 +65,6 @@ class CartItem extends Component {
     }
 }
 const mapStateToProps = state => ({
-    cart: state.keyafestore.cart
+    cart: state.keyafestore.cart.items
 });
 export default connect(mapStateToProps, null)(CartItem);

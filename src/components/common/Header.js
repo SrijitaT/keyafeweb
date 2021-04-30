@@ -21,7 +21,7 @@ function Header(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.keyafestore.cart);
+    const cart = useSelector(state => state.keyafestore.cart.items);
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const user = useSelector(state => state.auth.user);
     return (

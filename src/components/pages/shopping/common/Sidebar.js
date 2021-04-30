@@ -27,8 +27,6 @@ function Sidebar(props) {
 	            </div> 
             </div> 
 
-
-
 <div className="row">
 	<aside className="col-md-2">
 

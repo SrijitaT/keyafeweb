@@ -17,7 +17,7 @@ import Contact from "./components/pages/Contact";
 import Footer from "./components/common/Footer";
 import UploadImg from "./components/pages/admin/UploadImg";
 import Cart from "./components/pages/cart";
-import Checkout from "./components/pages/cart/Checkout";
+import Checkout from "./components/pages/checkout";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "redux/helpers/setAuthToken";
@@ -65,7 +65,7 @@ ReactDOM.render(
                     <Home />
                 </Route>
             </Switch>
-            <Footer />
+           { /*<Footer />*/}
         </Router>
     </Provider>, document.getElementById('root'));
 

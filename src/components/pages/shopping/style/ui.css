@@ -488,7 +488,9 @@ p:last-child {
     min-width: 280px; }
   .widget-header:hover i {
     color: #212529; }
-
+   .widget-header li{
+     list-style-type: none;
+   }
 /* desktop only */
 /* desktop only .end */
 /* ================ SECTION-FOOTER ==================  */
@@ -1196,8 +1198,16 @@ a[class*='card'] {
 
 /* ================== PAGES =================== */
 body {
-  background-color: #f6f7f9; }
-
+  /*background-color: #f6f7f9;*/
+  background-color:white;
+}
+.addrForm{
+  border-right:0.5px dashed rgba(0, 0, 0, 0.2);
+}
+.scrollable-div{
+  max-height:300px;
+  overflow-y: auto;
+}
 /* ================ PAGES HEADER ================== */
 .section-pagetop {
   padding: 45px 0; }

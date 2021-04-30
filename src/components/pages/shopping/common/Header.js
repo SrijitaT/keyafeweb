@@ -14,7 +14,7 @@ function ProductHeader() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.keyafestore.cart);
+  const cart = useSelector(state => state.keyafestore.cart.items);
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const user = useSelector(state => state.auth.user);
     return (
@@ -48,19 +48,30 @@ function ProductHeader() {
             <div className="col-xl-4 col-lg-4 col-md-6">
               <div className="widgets-wrap float-md-right">
                 <div className="widget-header mr-3">
+                {isAuthenticated?<li className="nav-item dropdown">
+                                    <Link className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Welcome {user.username}
+                                    </Link>
+                                    <div className="dropdown-menu text-lg-left text-center" aria-labelledby="navbarDropdown">
+                                        <Link className="dropdown-item scroll">My orders</Link>
+                                        <Link className="dropdown-item scroll">My Profile</Link>
+                                        <Link className="dropdown-item scroll">Change password</Link>
+                                        <Link className="dropdown-item scroll" onClick={() => dispatch(logoutUser())}>Logout</Link>
+                                    </div>
+                                </li>: 
                           <LoginRegisterModal
                            btnName="Login"
                            variant="outline-light"
-                          title="Login Form" />
+                          title="Login Form" />}
                 </div>
-                <div className="widget-header mr-3">
+                {/*<div className="widget-header mr-3">
                   <a href="#" className="widget-view">
                     <div className="icon-area">
                     <FontAwesomeIcon icon="shopping-bag" />
                     </div>
                     <small className="text"> Orders </small>
                   </a>
-                </div>
+                </div>*/}
                 <div className="widget-header">
                   <Link to="/cart" className="widget-view">
                     <div className="icon-area">

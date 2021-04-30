@@ -10,7 +10,6 @@ class CounterComp extends Component {
         };
       }
       static getDerivedStateFromProps(nextProps, prevState) {
-        console.log("here---",prevState,nextProps)
        if (prevState.clicks !== nextProps.value) {
           return { clicks: nextProps.value };
         }
@@ -18,7 +17,6 @@ class CounterComp extends Component {
     }
     
       IncrementItem = () => {
-        console.log("this.state---",this.state.clicks)
         this.setState({ clicks: this.state.clicks + 1 });
       }
       DecreaseItem = () => {

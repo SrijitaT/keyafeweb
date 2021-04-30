@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Button } from "react-bootstrap";
 import ModalHOC from "../../common/hoc/Modal";
 import Login from "./Login";
 import Register from "./Register";
