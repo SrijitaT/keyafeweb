@@ -34,7 +34,7 @@ const ModalHOC = (ModalBody, props) => {
                         <Modal.Title>{this.state.title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="bg-white">
-                        <ModalBody prod_det={this.props.prod_det} _id={this.props._id} changeTitle={this.changeTitle.bind(this)} />
+                        <ModalBody prod_det={this.props.prod_det} _id={this.props._id} changeTitle={this.changeTitle.bind(this)} handleShowHide={this.handleShowHide.bind(this)}/>
                     </Modal.Body>
                     <Modal.Footer className="bg-white">
                         <Button variant="secondary" onClick={() => this.handleShowHide(false)}>

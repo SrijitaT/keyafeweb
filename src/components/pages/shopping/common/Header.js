@@ -54,7 +54,7 @@ function ProductHeader() {
                                     </Link>
                                     <div className="dropdown-menu text-lg-left text-center" aria-labelledby="navbarDropdown">
                                         <Link className="dropdown-item scroll">My orders</Link>
-                                        <Link className="dropdown-item scroll">My Profile</Link>
+                                        <Link className="dropdown-item scroll" to="/dashboard">My Profile</Link>
                                         <Link className="dropdown-item scroll">Change password</Link>
                                         <Link className="dropdown-item scroll" onClick={() => dispatch(logoutUser())}>Logout</Link>
                                     </div>

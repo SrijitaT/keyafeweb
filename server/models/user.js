@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       default: "Kolkata"
     },
-    isRegistered: DataTypes.BOOLEAN
+    isRegistered: {type : DataTypes.BOOLEAN, default : true}
   }, {
       hooks: {
         async beforeCreate(user) {

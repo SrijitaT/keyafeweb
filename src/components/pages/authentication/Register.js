@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import {Link} from "react-router-dom";
+import { connect } from "react-redux";
+import { registerUser } from "redux/actions/authActions";
 
 class Register extends Component {
+	constructor() {
+        super();
+        this.state = {
+            email: "",password: "",username: "",phone: "",
+			address:"",country : "",city:"",state:"",
+			pincode:"",isRegistered: true, errors: ""
+        };
+    }
+	onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+	onSubmit(e) {
+        e.preventDefault();
+        const {errors,...register} = this.state;
+        this.props.registerUser(register)
+		.then(res=>this.props.handleShowHide(false))
+    }
     render() {
         return (
             <>
-            <Form>
+            <Form onSubmit={e => this.onSubmit(e)}>
                 <div className="form-row">
 					<div className="col form-group">
 						<label>Username</label>
-					  	<input type="text" className="form-control" placeholder=""/>
+					  	<input type="text" className="form-control" placeholder="" required name="username" onChange={e => this.onChange(e)}/>
 					</div>
 					<div className="col form-group">
 						<label>Phone</label>
-					  	<input type="number" className="form-control" placeholder=""/>
+					  	<input type="number" className="form-control" placeholder="" name="phone" onChange={e => this.onChange(e)}/>
 					</div> 
 				</div> 
 				<div className="form-group">
 					<label>Email</label>
-					<input type="email" className="form-control" placeholder=""/>
+					<input type="email" className="form-control" placeholder="" name="email" onChange={e => this.onChange(e)}/>
 					<small className="form-text text-muted">We'll never share your email with anyone else.</small>
 				</div> 
 				{/*<div className="form-group">
@@ -34,16 +53,16 @@ class Register extends Component {
 		</div> */}
 				<div className="form-row">
 					  <label>Address</label>
-					  <input type="text" className="form-control"/>
+					  <input type="text" className="form-control" name="address" onChange={e => this.onChange(e)}/>
 				</div> 
 				<div className="form-row">
 				<div className="form-group col-md-6">
 					  <label>Country/Region</label>
-					  <input type="text" className="form-control" value="India"/>
+					  <input type="text" className="form-control" value="India" name="country" onChange={e => this.onChange(e)}/>
 				</div> 
 				<div className="form-group col-md-6">
 					  <label>State</label>
-					  <select id="inputState" className="form-control">
+					  <select id="inputState" className="form-control" name="state" onChange={e => this.onChange(e)}>
 					    <option> Choose...</option>
 					      <option selected="">West Bengal</option>
 					  </select>
@@ -52,7 +71,7 @@ class Register extends Component {
 				<div className="form-row">
 					<div className="form-group col-md-6">
 					  <label>City</label>
-					  <select id="inputCity" className="form-control">
+					  <select id="inputCity" className="form-control" name="city" onChange={e => this.onChange(e)}>
 					    <option> Choose...</option>
 					      <option selected="">Kolkata</option>
 					      <option>Howrah</option>
@@ -60,17 +79,17 @@ class Register extends Component {
 					</div> 
 					<div className="form-group col-md-6">
 					  <label>Pincode</label>
-					  <input type="text" className="form-control"/>
+					  <input type="text" className="form-control" name="pincode" onChange={e => this.onChange(e)}/>
 					</div> 
 				</div> 
 				<div className="form-row">
 					<div className="form-group col-md-6">
 						<label>Create password</label>
-					    <input className="form-control" type="password"/>
+					    <input className="form-control" type="password" name="password" onChange={e => this.onChange(e)}/>
 					</div> 
 					<div className="form-group col-md-6">
 						<label>Repeat password</label>
-					    <input className="form-control" type="password"/>
+					    <input className="form-control" type="password" name="password" onChange={e => this.onChange(e)}/>
 					</div> 
 				</div>
 			    <div className="form-group">
@@ -87,4 +106,12 @@ class Register extends Component {
         )
     }
 }
-export default Register;
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { registerUser }
+)(Register);

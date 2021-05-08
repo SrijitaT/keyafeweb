@@ -7,7 +7,7 @@ import { getErrors } from "./errorActions";
 const serverUrl = "http://localhost:5000";
 
 export const registerUser = (userData, history) => dispatch => {
-    axios
+    return axios
         .post(serverUrl + "/api/users/register", userData)
         .then(res => console.log("Registration done.....", res))
         .catch(err => dispatch(getErrors(err)));

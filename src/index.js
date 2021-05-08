@@ -22,6 +22,8 @@ import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "redux/helpers/setAuthToken";
 import { setCurrentUser, logoutUser } from "redux/actions/authActions";
+import Dashboard from "./components/pages/user/dashboard";
+import PrivateRoute from "./components/pages/authentication/PrivateRoute";
 import store from "./redux/store";
 
 if (localStorage.jwtToken) {
@@ -45,6 +47,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
+            <PrivateRoute path="/dashboard" component={Dashboard} />
                 <Route path="/checkout">
                     <Checkout />
                 </Route>

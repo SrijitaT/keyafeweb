@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Cart.init({
-    prod_id: {type: Sequelize.INTEGER(11),
+    prod_id: {type: DataTypes.INTEGER(11),
       foreignKey: true,
     references: {
       model: 'Products', // name of Target model
       key: 'id', // key in Target model that we're referencing
     }},
-    user_id: {type: Sequelize.INTEGER,
+    user_id: {type: DataTypes.INTEGER,
       foreignKey: true,
       references: {
         model: 'Users', // name of Target model

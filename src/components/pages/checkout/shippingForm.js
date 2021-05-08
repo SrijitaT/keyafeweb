@@ -40,7 +40,7 @@ class ShippingForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label for="inputAddress">Address</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
+                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 GT Road"/>
                 </div>
                 <div className="form-group">
                     <label for="inputAddress2">Address 2</label>

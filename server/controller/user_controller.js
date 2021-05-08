@@ -26,6 +26,9 @@ const registerUser = async (req, res) => {
                 address: req.body.address,
                 pincode: req.body.pincode,
                 email: req.body.email,
+                country: req.body.country,
+                state: req.body.state,
+                city: req.body.city,
                 password: req.body.password
             })
                 .then(user => {
