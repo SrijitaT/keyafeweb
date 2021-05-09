@@ -55,7 +55,7 @@ const loginUser = async (req, res) => {
     //Find the user by email
     const errors = {};
     try {
-        var current_user = await models.User.findOne({ where: { email: req.body.email } });;
+        var current_user = await models.User.findOne({ where: { email } });
         if (!current_user) {
             errors.email = "User not found!";
             return res.status(404).json(errors);
@@ -64,14 +64,14 @@ const loginUser = async (req, res) => {
     catch (err) {
         console.log(err);
     }
-    //Check password
+    //Check   
     const isMatch = await current_user.isValidPassword(password);
     if (isMatch) {
         //User Matched
-        const payload = {
-            id: current_user.id,
-            username: current_user.username
-        }; //Create JWT payload
+        let payload = {...current_user.dataValues}; //Create JWT payload
+        delete payload.password;
+        delete payload.createdAt;
+        delete payload.updatedAt;
 
         //Sign Token
         jwt.sign(
@@ -79,10 +79,14 @@ const loginUser = async (req, res) => {
             keys.secretOrKey,
             { expiresIn: 3600 },
             (err, token) => {
+                if(token){
                 res.json({
                     success: true,
                     token: "Bearer " + token
                 });
+            }else{
+                throw err;
+            }
             }
         );
     } else {

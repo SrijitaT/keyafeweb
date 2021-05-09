@@ -1,6 +1,9 @@
 import React from 'react'
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function CartBill() {
+	const sub_total = useSelector(state => state.keyafestore.cart.sub_total)
     return (
         <aside className="col-md-3">
 		<div className="card mb-3">
@@ -22,19 +25,19 @@ function CartBill() {
 			<div className="card-body">
 					<dl className="dlist-align">
 					  <dt>Total price:</dt>
-					  <dd className="text-right">USD 568</dd>
+					  <dd className="text-right">&#x20B9; {sub_total}</dd>
 					</dl>
 					<dl className="dlist-align">
 					  <dt>Discount:</dt>
-					  <dd className="text-right">USD 658</dd>
+					  <dd className="text-right">&#x20B9; 0</dd>
 					</dl>
 					<dl className="dlist-align">
 					  <dt>Total:</dt>
-					  <dd className="text-right  h5"><strong>$1,650</strong></dd>
+					  <dd className="text-right  h5"><strong>&#x20B9; {sub_total}</strong></dd>
 					</dl>
 					<hr/>
 					<p className="text-center mb-3">
-						<img src="images/misc/payments.png" height="26"/>
+					<FontAwesomeIcon icon="credit-card" />
 					</p>
 		</div>  
         </div>
