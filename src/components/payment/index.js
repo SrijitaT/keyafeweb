@@ -10,9 +10,7 @@ import {
   useElements,
   useStripe
 } from "@stripe/react-stripe-js";
-import PaymentForm from "./paymentForm";
-import Field from "../../common/Form/field";
-//import "./styles.css";
+import "./styles.css";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -39,12 +37,37 @@ const CARD_OPTIONS = {
 };
 
 const CardField = ({ onChange }) => (
-  <div className="form-row">
+  <div className="FormRow">
     <CardElement options={CARD_OPTIONS} onChange={onChange} />
   </div>
 );
 
-
+const Field = ({
+  label,
+  id,
+  type,
+  placeholder,
+  required,
+  autoComplete,
+  value,
+  onChange
+}) => (
+  <div className="FormRow">
+    <label htmlFor={id} className="FormRowLabel">
+      {label}
+    </label>
+    <input
+      className="FormRowInput"
+      id={id}
+      type={type}
+      placeholder={placeholder}
+      required={required}
+      autoComplete={autoComplete}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
 
 const SubmitButton = ({ processing, error, children, disabled }) => (
   <button
@@ -152,11 +175,8 @@ const CheckoutForm = () => {
       <ResetButton onClick={reset} />
     </div>
   ) : (
-    <div className="card mb-4">
-    <div className="card-body">
-    <h4 className="card-title mb-4">Payment</h4>
-    <form className="form-row" style={{"maxWidth":"380px"}} onSubmit={handleSubmit}>
-      <fieldset className="form-group">
+    <form className="Form" onSubmit={handleSubmit}>
+      <fieldset className="FormGroup">
         <Field
           label="Name"
           id="name"
@@ -194,7 +214,7 @@ const CheckoutForm = () => {
           }}
         />
       </fieldset>
-      <fieldset className="form-group">
+      <fieldset className="FormGroup">
         <CardField
           onChange={(e) => {
             setError(e.error);
@@ -207,7 +227,6 @@ const CheckoutForm = () => {
         Pay $25
       </SubmitButton>
     </form>
-    </div></div>
   );
 };
 
@@ -223,14 +242,14 @@ const ELEMENTS_OPTIONS = {
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe("pk_test_51IjrO8SGjWpsMg4jO96ZD9Wbsvprpg81tMGH6av6dRT4irE08yuoYcMliJX6hVHbVa0o5rgU7FjLxl4Og9CHi21Q00cyCfNWPS");
 
-const Payment = () => {
+const CheckoutStripe = () => {
   return (
     <div className="AppWrapper">
       <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-        <PaymentForm />
+        <CheckoutForm />
       </Elements>
     </div>
   );
 };
 
-export default Payment;
+export default CheckoutStripe;

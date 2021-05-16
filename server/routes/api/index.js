@@ -1,9 +1,9 @@
-var express = require('express');
+const express = require('express');
 const multer = require('multer');
 const path = require("path");
 const models = require("../../models");
 const { imageFilter } = require("../../helpers/imageHelper");
-var router = express.Router();
+const router = express.Router();
 
 function sleepFor(sleepDuration) {
   var now = new Date().getTime();

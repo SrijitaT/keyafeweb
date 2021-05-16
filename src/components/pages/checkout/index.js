@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import BannerTop from "../../common/BannerTop";
 import ShippingForm from "./shippingForm";
 import OrderSummary from "./orderSummary";
+import PaymentForm from "../payment";
 
 export default class Checkout extends Component {
     render() {
@@ -16,6 +17,7 @@ export default class Checkout extends Component {
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4 padding-y">
                 <OrderSummary/>
+               
             </div>
             </div>
             </Container>

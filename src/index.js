@@ -8,6 +8,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
     Link
 } from "react-router-dom";
 import Header from "./components/common/Header.js";
@@ -23,6 +24,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "redux/helpers/setAuthToken";
 import { setCurrentUser, logoutUser } from "redux/actions/authActions";
 import Dashboard from "./components/pages/user/dashboard";
+import Payment from "./components/pages/payment/paymentForm2";
 import PrivateRoute from "./components/pages/authentication/PrivateRoute";
 import store from "./redux/store";
 
