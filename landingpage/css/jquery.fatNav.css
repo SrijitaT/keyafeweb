@@ -112,13 +112,13 @@
   font-size: 2em;
 }
 .fat-nav li, .fat-nav li a {
-  color:#7fbb00;
+  color:#F42AF8;
 }
 .fat-nav li a {
   text-decoration: none;
 }
 @media screen and (max-width: 768px){
-	.w3layouts-nav-right {
+	.cafe-nav-right {
 		float: right;
 		line-height: 67px;
 		margin-right: 5em;
