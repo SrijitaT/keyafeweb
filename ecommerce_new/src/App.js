@@ -4,26 +4,26 @@ import ShopPage from "./pages/shop/shop.component";
 import Header from './components/header/header.component';
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { Switch,Route,BrowserRouter } from "react-router-dom";
+import { Switch,Route,BrowserRouter,Redirect } from "react-router-dom";
+import { useSelector,useDispatch } from 'react-redux';
+import {setCurrentUser} from './redux/user/user.actions.js';
 import "./App.css";
 
 
 function App() {
-  const [currentUser, setcurrentUser] = useState(null);
-  
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.user.currentUser)
   let unsubscribeFromAuth = useRef(null);
   useEffect(() => {
-    console.log("in useeffect on mount")
    unsubscribeFromAuth.current = auth.onAuthStateChanged(async userAuth=>{
      if(userAuth)
      {
         const userRef = createUserProfileDocument(userAuth);    
         (await userRef).onSnapshot(snapShot=>{
-          setcurrentUser({id:snapShot.id,...snapShot.data()}) //data is for obtaning the values
-          console.log("currentUser :",currentUser)
+          dispatch(setCurrentUser({id:snapShot.id,...snapShot.data()})) //data is for obtaning the values
         })
      }else{
-      setcurrentUser(userAuth);
+      dispatch(setCurrentUser(userAuth));
      }
    
     })
@@ -34,11 +34,11 @@ function App() {
  
   return (
     <BrowserRouter>
-    <Header currentUser={currentUser}/>
+    <Header/>
     <Switch>
-    <Route path="/shop" component={ShopPage} />
-    <Route path="/signin" component={SignInAndSignUpPage}/>
-    <Route exact path="/" component={HomePage}/> 
+      <Route exact path="/" component={HomePage}/> 
+      <Route path="/shop" component={ShopPage} />
+      <Route exact path="/signin" render={()=> currentUser ? <Redirect to="/"/> : <SignInAndSignUpPage/>}/>
     </Switch>
     </BrowserRouter>
   );
