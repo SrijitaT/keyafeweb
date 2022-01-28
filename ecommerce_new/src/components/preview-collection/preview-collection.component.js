@@ -8,7 +8,7 @@ export default function CollectionPreview({title,items}) {
       <div className="title">{title.toUpperCase()}</div>
       <div className="preview">{
         items.filter((items,idx)=>idx<4).map(({id,...others})=>(
-          <CollectionItem key={items.id} {...others}>{items.name}</CollectionItem>
+          <CollectionItem key={id} id={id} title={title} {...others}>{others.name}</CollectionItem>
         ))
       }</div>
     </div>

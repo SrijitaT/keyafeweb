@@ -37,7 +37,7 @@ function App() {
     <Header/>
     <Switch>
       <Route exact path="/" component={HomePage}/> 
-      <Route path="/shop" component={ShopPage} />
+      <Route path="/shop/:id" component={ShopPage} />
       <Route exact path="/signin" render={()=> currentUser ? <Redirect to="/"/> : <SignInAndSignUpPage/>}/>
     </Switch>
     </BrowserRouter>
