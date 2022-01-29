@@ -18,12 +18,12 @@ export default function Header() {
         <Link className="option" to="/shop">SHOP</Link>
         <Link className="option" to="/contact">CONTACT</Link>
         {
-          user.currentUser?<div className="option" onClick={()=>auth.signOut()}>Welcome {user.currentUser.displayName}</div>
+          user && user.currentUser?<div className="option" onClick={()=>auth.signOut()}>Welcome {user.currentUser.displayName}</div>
           :<Link className="option" to="/signIn">SIGN IN</Link>
         }
         <CartIcon hidden={hidden} setHidden={setHidden}/>
       </div>
-      {!hidden?<CartDropdown/>:null}
+      {!hidden?<CartDropdown setHidden={setHidden}/>:null}
     </div>
   )
 }

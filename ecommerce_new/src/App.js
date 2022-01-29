@@ -4,6 +4,7 @@ import ShopPage from "./pages/shop/shop.component";
 import Header from './components/header/header.component';
 import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 import { Switch,Route,BrowserRouter,Redirect } from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions.js';
@@ -39,6 +40,7 @@ function App() {
       <Route exact path="/" component={HomePage}/> 
       <Route path="/shop/:id" component={ShopPage} />
       <Route exact path="/signin" render={()=> currentUser ? <Redirect to="/"/> : <SignInAndSignUpPage/>}/>
+      <Route exact path="/checkout" component={CheckoutPage}/>
     </Switch>
     </BrowserRouter>
   );
