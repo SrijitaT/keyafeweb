@@ -1,39 +1,37 @@
 'use strict';
-
-const Sequelize = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define('Product', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER
-    },
-    name: DataTypes.STRING,
+  class Product extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      this.belongsTo(models.Categories)
+      this.belongsTo(models.Type)
+      this.belongsTo(models.Shape)
+      this.belongsTo(models.Flavour)
+      this.hasMany(models.Prod_Flavour_options);
+    }
+  }
+  Product.init({
+    title: DataTypes.STRING,
+    desc: DataTypes.STRING,
+    cat_id: DataTypes.INTEGER,
+    type_id: DataTypes.INTEGER,
+    unit_price: DataTypes.INTEGER,
+    qty:DataTypes.INTEGER,
+    weight: DataTypes.INTEGER,
     img_url: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    category_id: {
-      type: Sequelize.INTEGER(11),
-      references: {
-        model: 'Categories', // name of Target model
-        key: 'id', // key in Target model that we're referencing
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    },
-    flavour_id: {
-      type: Sequelize.INTEGER(11),
-      references: {
-        model: 'Flavours', // name of Target model
-        key: 'id', // key in Target model that we're referencing
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    },
-    description : DataTypes.STRING
-  }, {});
-  Product.associate = function (models) {
-    // associations can be defined here
-  };
+    shape_id: DataTypes.INTEGER,
+    original_flavour: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Product',
+  });
   return Product;
 };
