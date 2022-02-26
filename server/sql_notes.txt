@@ -1,0 +1,11 @@
+SELECT `products`.*,`categories`.name as cat_name,`shapes`.name as shape_name,`types`.name as type_name,
+`flavours`.`variety` as flavour_variety FROM `products`,`categories`,`shapes`,`flavours`,`types` WHERE 
+`products`.`cat_id`=`categories`.id and `products`.`shape_id`=`shapes`.`id` and
+`products`.`type_id`=`types`.`id` and `products`.`original_flavour_id`=`flavours`.`id`;
+
+
+SELECT `products`.*,`categories`.name as cat_name,`shapes`.name as shape_name,
+`types`.name as type_name,`flavours`.`variety` as flavour_variety FROM `products`
+JOIN `categories` JOIN `shapes` JOIN `flavours` JOIN `types`
+WHERE `products`.`cat_id`=`categories`.id and `products`.`shape_id`=`shapes`.`id` and 
+`products`.`type_id`=`types`.`id` and `products`.`original_flavour_id`=`flavours`.`id`;

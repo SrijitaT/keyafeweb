@@ -6,6 +6,11 @@ const keys = require("../config/jwt/keys");
 const moment = require("moment");
 
 
+const getUserRole = async function(id){
+    const user = await models.User.findOne({ where: { id } });
+    return user.dataValues.role;
+}
+
 const registerUser = async (req, res) => {
     /* const { errors, isValid } = validateRegisterInput(req.body);
      //Check validation
@@ -64,6 +69,9 @@ const loginUser = async (req, res) => {
             errors.email_id = "User not found!";
             return res.status(404).json(errors);
         }
+        if(!current_user.dataValues.isRegistered || !current_user.dataValues.password){
+            return res.status(403).json({"msg":"You cannot login since you are not registered!!"});
+        }
     }
     catch (err) {
         console.log(err);
@@ -73,9 +81,7 @@ const loginUser = async (req, res) => {
     if (isMatch) {
         //User Matched
         let payload = {...current_user.dataValues}; //Create JWT payload
-        delete payload.password;
-        delete payload.createdAt;
-        delete payload.updatedAt;
+        payload = {id:payload.id,name:payload.username,email_id:payload.email_id};
 
         //Sign Token
         jwt.sign(
@@ -100,4 +106,4 @@ const loginUser = async (req, res) => {
 
 }
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser,getUserRole };

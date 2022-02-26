@@ -1,0 +1,11 @@
+sequelize model:generate --name Categories --attributes name:string,img_url:string,desc:string
+
+sequelize model:generate --name Flavour --attributes variety:string,desc:string
+
+sequelize model:generate --name Type --attributes name:string,desc:string
+
+sequelize model:generate --name Shape --attributes name:string,desc:string
+
+sequelize model:generate --name Product --attributes name:string,desc:string,cat_id:integer,flavour_options:string,type_id:integer,title:string,unit_price:integer,weight:integer,img_url:string,shape_id:integer,original_flavour:integer
+
+

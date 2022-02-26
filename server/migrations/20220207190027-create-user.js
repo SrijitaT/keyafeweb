@@ -18,13 +18,20 @@ module.exports = {
         type: Sequelize.STRING
       },
       email_id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate:{
+          isEmail: true,
+          notEmpty: true
+        }
       },
       address: {
         type: Sequelize.STRING
       },
       gender: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate:{
+          isIn: [['Male', 'Female']]
+        }
       },
       password: {
         type: Sequelize.STRING
@@ -46,6 +53,7 @@ module.exports = {
       },
       isRegistered: {type : Sequelize.BOOLEAN, defaultValue : true},
       birthday:{type: Sequelize.DATE},
+      role: {type : Sequelize.STRING, defaultValue : "customer"},
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

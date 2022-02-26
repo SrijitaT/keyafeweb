@@ -33,9 +33,29 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     username: DataTypes.STRING,
     phone: DataTypes.STRING,
-    email_id: DataTypes.STRING,
+    email_id: {
+      type: DataTypes.STRING,
+      validate:{
+        isEmail: {
+          args:true,
+          "msg":"Please enter valid email"
+        },
+        notEmpty:{
+          args:true,
+          msg:"Please enter an email id"
+        }
+      }
+    },
     address: DataTypes.STRING,
-    gender: DataTypes.STRING,
+    gender: {
+      type: DataTypes.STRING,
+      validate:{
+        isIn: {
+          args:[['Male', 'Female' , 'Trans']],
+          msg: "Please enter within Male,Female and Transgender"
+        }
+      }
+    },
     password: DataTypes.STRING,
     pincode: DataTypes.INTEGER,
     birthday:DataTypes.DATE,
@@ -51,7 +71,8 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       default: "Kolkata"
     },
-    isRegistered: {type : DataTypes.BOOLEAN, default : true}
+    isRegistered: {type : DataTypes.BOOLEAN, default : true},
+    role: {type : DataTypes.STRING, default : "customer"}
   }, {
     sequelize,
     modelName: 'User',
