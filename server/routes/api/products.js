@@ -13,7 +13,7 @@ router.post("/upload",verifyUserIsAdmin, product_controller.upload.single('file'
 //@desc Login User/Return jwt token
 //@access Public
 //router.post("/login", user_controller.loginUser);
-
+router.get("/:category_name",product_controller.getProductsByCategory)
 
 
 module.exports = router;

@@ -1,80 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './components/pages/FontAwesomeIcons/index';
 import './index.css';
-import Home from './components/pages/Home/index.js';
-import * as serviceWorker from './serviceWorker';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Redirect,
-    Link
-} from "react-router-dom";
-import Header from "./components/common/Header.js";
-import About from "./components/pages/About.js";
-import Shopping from "./components/pages/shopping/index";
-import Contact from "./components/pages/Contact";
-import Footer from "./components/common/Footer";
-import UploadImg from "./components/pages/admin/UploadImg";
-import Cart from "./components/pages/cart";
-import Checkout from "./components/pages/checkout";
-import { Provider } from "react-redux";
-import jwt_decode from "jwt-decode";
-import setAuthToken from "redux/helpers/setAuthToken";
-import { setCurrentUser, logoutUser } from "redux/actions/authActions";
-import Dashboard from "./components/pages/user/dashboard";
-import Payment from "./components/pages/payment/paymentForm2";
-import PrivateRoute from "./components/pages/authentication/PrivateRoute";
-import store from "./redux/store";
-
-if (localStorage.jwtToken) {
-    setAuthToken(localStorage.jwtToken);
-    //Decode token and get user info
-    const decoded = jwt_decode(localStorage.jwtToken);
-    //Set user and isAuthenticated
-    store.dispatch(setCurrentUser(decoded));
-    //Check for expired token
-    const currentTime = Date.now() / 1000;
-    if (decoded.exp < currentTime) {
-        //logout user
-        store.dispatch(logoutUser());
-        //TODO:Clear current profile
-        //Redirect to login
-        //window.location.href = "/login";
-    }
-}
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import {store,persistor} from "./redux/store";
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <Switch>
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-                <Route path="/checkout">
-                    <Checkout />
-                </Route>
-                <Route path="/cart">
-                    <Cart />
-                </Route>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Route path="/shopping">
-                    <Shopping />
-                </Route>
-                <Route path="/contact">
-                    <Contact />
-                </Route>
-                <Route exact path="/upload/images"><UploadImg /></Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
-           { /*<Footer />*/}
-        </Router>
-    </Provider>, document.getElementById('root'));
+  <Provider store={store}>
+ <React.StrictMode>
+   <PersistGate persistor={persistor}>
+      <App />
+   </PersistGate>
+  </React.StrictMode>,
+  </Provider>,
+  document.getElementById('root')
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

@@ -36,4 +36,16 @@ const uploadCatalogue = async (req, res) => {
 }
 
 
-module.exports = { uploadCatalogue,upload };
+const getProductsByCategory = async (req,res)=>{
+  let {category_name} = req.params;
+  try{
+  let cat = await models.Categories.findOne({where:{name:category_name},attributes:['id','name']});
+  let cat_id = cat.dataValues.id;
+  let prod = await models.Product.findAll({ where: { cat_id} })
+  res.send(prod)
+  }catch(err){
+    console.log("get products by ct error",err);
+  }
+}
+
+module.exports = { uploadCatalogue,upload,getProductsByCategory };

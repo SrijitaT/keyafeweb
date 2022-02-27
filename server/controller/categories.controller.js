@@ -20,7 +20,7 @@ const upload =  multer({ storage, fileFilter: imageFilter })
 const uploadCatalogue = async (req, res) => {
       // req.file contains information of uploaded file
       // req.body contains information of text fields, if there were any
-      let { title, desc } = req.body;
+      let { title, desc ,name} = req.body;
       if (req.fileValidationError) {
         return res.send(req.fileValidationError);
       }
@@ -31,7 +31,7 @@ const uploadCatalogue = async (req, res) => {
   
       // Display uploaded image for user validation
       const fileUploaded = req.protocol + "://" + req.hostname + ":5000/"+"uploads/images/categories/" + req.file.filename;
-      models.Categories.create({ title, img_url: fileUploaded, desc }, { fields: ['title', 'img_url', 'desc'] })
+      models.Categories.create({ name,title, img_url: fileUploaded, desc }, { fields: ['title','name', 'img_url', 'desc'] })
       .then(cat => {
         res.send({ title, img_url: fileUploaded, desc })
       }).catch(err => res.status(500).send({error:err.message}))
@@ -41,7 +41,7 @@ const uploadCatalogue = async (req, res) => {
 
 const getAllCategories = async function(req,res){
   try{
-   let categories = await models.Categories.findAll();
+   let categories = await models.Categories.findAll({attributes:["id","title","name","img_url","desc"]});
    categories = categories.map(c=>c.dataValues);
    res.send(categories)
   }catch(err){

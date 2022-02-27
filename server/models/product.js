@@ -11,11 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Categories)
-      this.belongsTo(models.Type)
-      this.belongsTo(models.Shape)
-      this.belongsTo(models.Flavour)
-      this.hasMany(models.Prod_Flavour_options);
+      this.hasOne(models.Categories,{foreignKey:'cat_id'})
+      this.hasOne(models.Type,{foreignKey:'type_id'})
+      this.hasOne(models.Shape,{foreignKey:'shape_id'})
+      this.hasOne(models.Flavour,{foreignKey:'original_flavour_id'})
     }
   }
   Product.init({
